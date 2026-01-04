@@ -1,6 +1,12 @@
 import Image from "next/image";
+import client from "../../strapi";
 
-export default function Home() {
+export const dynamic = "force-static";
+
+export default async function Home() {
+
+  const articles = await getData();
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -59,7 +65,15 @@ export default function Home() {
             Documentation
           </a>
         </div>
+        <pre>{JSON.stringify(articles, null, 2)}</pre>
       </main>
     </div>
   );
+}
+
+async function getData() {
+  const result = await client.collection('articles').find();
+  const articles = result.data;
+
+  return articles;
 }

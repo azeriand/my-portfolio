@@ -1,0 +1,30 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/azeriand/my-portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/azeriand/my-portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azeriand/my-portfolio.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --kill-others \"cd backend; npm run develop\" \"cd frontend; npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "azeriand-library": "^1.14.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18"
+  }
+}
