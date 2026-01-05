@@ -25,51 +25,53 @@ export default function Home() {
 
   return (
     <Card noPadding appearance='ghost' className='gap-4 flex flex-col'>
-      <Card className='flex flex-col gap-y-4 rounded-xl'>
+      <Card appearance='mate' color="blue" intensity={500} className='flex flex-col gap-y-4 rounded-xl'>
         <section className="flex justify-between items-center rounded-xl">
-          <p className="text-lg font-bold">Featured Project</p>
-          <Button label='View all projects'/>
+          <p className="text-base font-bold" style={{color: '#17A7EE'}}>Featured Project</p>
+          <Button appearance="mate" color="blue" intensity={800} label='View all projects'/>
         </section>
-        <section className='grid grid-cols-12 gap-x-4'>
-          <div className='col-span-5'>Aqui va una imagen del proyecto</div>
+        <section className='grid grid-cols-12 gap-x-14'>
+          <img src='/fitness_app_preview.png' className='col-span-5 rounded-lg'/>
           <article className='col-span-7 gap-y-4 flex flex-col'>
-            <h3> Fitness Tracker App</h3>
-            <p> The egiptyans believed...</p>
+            <p style={{color: '#17A7EE'}} className='font-bold text-xl'> Fitness Tracker App</p>
+            <p style={{ color: 'black'}}> The egiptyans believed...</p>
             <div className="flex gap-x-2">
-              <Button label="Open" icon={<FaArrowUpRightFromSquare/>}/>
-              <Button label="Repo" icon={<FaGithub/>}/>
+              <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}}/>
+              <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}}/>
             </div>
           </article>
         </section>
       </Card>
 
       <section className='grid grid-cols-12 gap-x-4'>
-        <Card className='col-span-6 rounded-xl gap-y-4 flex flex-col'>
-          <p className='text-lg font-bold'>My Design Library</p>
+        <Card appearance='mate' color="purple" intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col'>
+          <p className='text-base font-bold' style={{ color: '#9b8ce9'}}>My Design Library</p>
           <section className='grid grid-cols-12 gap-x-4'>
-            <Card className='col-span-6'/>
+            <Card color='purple' intensity={800} appearance='mate' className='col-span-6'>
+              Aqui van componentes de la libreria cuquitos
+            </Card>
             <div className='col-span-6 flex flex-col gap-y-4'>
-              <h3> Hola Pesicola</h3>
-              <p> The egiptyans believed that the most significant thing you could do in your live was die.</p>
+              <p className='font-bold' style={{ color: '#9b8ce9'}}> Azeriand Library</p>
+              <p style={{ color: 'black'}}> The egiptyans believed that the most significant thing you could do in your live was die.</p>
               <div className="flex gap-x-2">
-              <Button label="Open" icon={<FaArrowUpRightFromSquare/>}/>
-              <Button label="Repo" icon={<FaGithub/>}/>
+              <Button label="Open" color='purple' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{ color: 'white'}}/>
+              <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{ color: '#9b8ce9'}}/>
             </div>
             </div>
           </section>
         </Card>
 
-        <Card className='col-span-6 rounded-xl gap-y-4 flex flex-col'>
+        <Card appearance='mate' color='orange' intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col'>
           <section className="flex justify-between items-center">
-            <p className="text-lg font-bold">My Latest Articles</p>
-            <Button label='View all'/>
+            <p className="text-base font-bold" style={{color: '#f59e31'}}>My Latest Articles</p>
+            <Button appearance="mate" color="orange" intensity={800} label='View all'/>
           </section>
           {articles.map(article => 
-            <Card noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
-              <Badge size='sm' label={'Design Library'}/>
+            <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
+              <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
               <article className='flex flex-col gap-y-1'>
-                <h3 className='text-bold'>{article.title}</h3>
-                <p>{article.description}</p>
+                <h3 style={{ color: 'black'}} className='font-bold'>{article.title}</h3>
+                <p style={{ color: 'black'}}>{article.description}</p>
               </article>
             </Card>
           )}
