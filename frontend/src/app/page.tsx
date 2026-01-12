@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import{ useState, useEffect } from "react";
 import client from "../../strapi";
 import { Card, Button, Badge } from "azeriand-library";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
@@ -24,6 +24,7 @@ export default function Home() {
   }, []);
 
   return (
+
     <Card noPadding appearance='ghost' className='gap-4 flex flex-col'>
       <Card appearance='mate' color="blue" intensity={500} className='flex flex-col gap-y-4 rounded-xl'>
         <section className="flex justify-between items-center rounded-xl">
@@ -77,8 +78,8 @@ export default function Home() {
           )}
         </Card>
       </section>
-
     </Card>
+
   );
 }
 

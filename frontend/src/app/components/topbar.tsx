@@ -13,7 +13,7 @@ export default function Topbar() {
                 <div className='flex gap-x-3'>
                     <Button color='blue' intensity={700} label="Projects" style={{ color: 'black' }}/>
                     <Button color='blue' intensity={700} label="Library" style={{ color: 'black' }}/>
-                    <Button color='blue' intensity={700} label="Posts" style={{ color: 'black' }}/>
+                    <Button color='blue' intensity={700} label="Articles" style={{ color: 'black' }}/>
                     <Button color='blue' intensity={700} label="Resume" style={{ color: 'black' }}/>
                 </div>
             </div>
