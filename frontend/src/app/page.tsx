@@ -1,6 +1,7 @@
 
 "use client";
 
+import Link from "next/link";
 import{ useState, useEffect } from "react";
 import client from "../../strapi";
 import { Card, Button, Badge } from "azeriand-library";
@@ -29,7 +30,9 @@ export default function Home() {
       <Card appearance='mate' color="blue" intensity={500} className='flex flex-col gap-y-4 rounded-xl'>
         <section className="flex justify-between items-center rounded-xl">
           <p className="text-base font-bold" style={{color: '#17A7EE'}}>Featured Project</p>
-          <Button appearance="mate" color="blue" intensity={800} label='View all projects'/>
+          <Link href='/projects'>
+            <Button appearance="mate" color="blue" intensity={800} label='View all projects'/>
+          </Link>
         </section>
         <section className='grid grid-cols-12 gap-x-14'>
           <img src='/fitness_app_preview.png' className='col-span-5 rounded-lg'/>
@@ -55,7 +58,9 @@ export default function Home() {
               <p className='font-bold' style={{ color: '#9b8ce9'}}> Azeriand Library</p>
               <p style={{ color: 'black'}}> The egiptyans believed that the most significant thing you could do in your live was die.</p>
               <div className="flex gap-x-2">
-              <Button label="Open" color='purple' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{ color: 'white'}}/>
+              <Link href='/library'>
+                <Button label="Open" color='purple' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{ color: 'white'}}/>
+              </Link>
               <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{ color: '#9b8ce9'}}/>
             </div>
             </div>
