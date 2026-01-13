@@ -1,4 +1,5 @@
 'use client'
+
 import { Card, Button } from 'azeriand-library';
 import { FaReact } from "react-icons/fa";
 import { FaFileDownload } from "react-icons/fa";
@@ -7,6 +8,11 @@ import { MdWifiTethering } from "react-icons/md";
 
 
 export default function Sidebar() {
+
+    const mailTo = () => {window.location.href = 'mailto: a.romeracosta@gmail.com'}
+    const myResumeLink = () => {window.open('https://www.youtube.com/watch?v=oHg5SJYRHA0&t=2s')}
+
+
   return (
     <div className='w-full flex flex-col gap-y-4'>
         <Card noPadding appearance='ghost'>
@@ -20,8 +26,8 @@ export default function Sidebar() {
             Available for new projects
         </Card>
         <section className='grid grid-cols-12 gap-x-3 w-full h-[4rem]'>
-            <Button appearance='mate' color='blue' intensity={700} icon={<FaFileDownload/>} label='Resume' style={{ color: 'black' }} className='col-span-6 w-full font-bold'/>
-            <Button appearance='mate' color='blue' intensity={700} icon={<FaEnvelope/>} label="Let's talk!" style={{ color: 'black' }} className='col-span-6 w-full font-bold'/>
+            <Button appearance='mate' color='blue' intensity={700} icon={<FaFileDownload/>} label='Resume' style={{ color: 'black' }} className='col-span-6 w-full font-bold' onClick={myResumeLink}/>
+            <Button appearance='mate' color='blue' intensity={700} icon={<FaEnvelope/>} label="Let's talk!" style={{ color: 'black' }} className='col-span-6 w-full font-bold' onClick={mailTo}/>
         </section>
         <section className='grid grid-cols-4 grid-rows-2 justify-items-center w-full gap-1'>
             <Button appearance='mate' color='blue' intensity={700} icon={<FaReact/>} style={{ color: 'black' }} className='w-full aspect-square'/>
