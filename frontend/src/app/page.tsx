@@ -24,6 +24,11 @@ export default function Home() {
     fetchArticles();
   }, []);
 
+  const fitnessAppPage = () =>{window.open('https://fitness.andrearc.com/')}
+  const fitnessAppRepo = () =>{window.open('https://github.com/azeriand/fitness-app')}
+  const libraryPage = () =>{window.open('https://library.andrearc.com/')}
+  const libraryRepo = () =>{window.open('https://github.com/azeriand/azeriand-library')}
+
   return (
 
     <Card noPadding appearance='ghost' className='gap-4 flex flex-col'>
@@ -40,8 +45,8 @@ export default function Home() {
             <p style={{color: '#17A7EE'}} className='font-bold text-xl'> Fitness Tracker App</p>
             <p style={{ color: 'black'}}> The egiptyans believed...</p>
             <div className="flex gap-x-2">
-              <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}}/>
-              <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}}/>
+              <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}} onClick={fitnessAppPage}/>
+              <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={fitnessAppRepo}/>
             </div>
           </article>
         </section>
@@ -58,10 +63,8 @@ export default function Home() {
               <p className='font-bold' style={{ color: '#9b8ce9'}}> Azeriand Library</p>
               <p style={{ color: 'black'}}> The egiptyans believed that the most significant thing you could do in your live was die.</p>
               <div className="flex gap-x-2">
-              <Link href='/library'>
-                <Button label="Open" color='purple' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{ color: 'white'}}/>
-              </Link>
-              <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{ color: '#9b8ce9'}}/>
+              <Button label="Open" color='purple' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{ color: 'white'}} onClick={libraryPage}/>
+              <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{ color: '#9b8ce9'}} onClick={libraryRepo}/>
             </div>
             </div>
           </section>
@@ -70,7 +73,9 @@ export default function Home() {
         <Card appearance='mate' color='orange' intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col'>
           <section className="flex justify-between items-center">
             <p className="text-base font-bold" style={{color: '#f59e31'}}>My Latest Articles</p>
-            <Button appearance="mate" color="orange" intensity={800} label='View all'/>
+            <Link href='/articles'>
+              <Button appearance="mate" color="orange" intensity={800} label='View all'/>
+            </Link>
           </section>
           {articles.map(article => 
             <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
