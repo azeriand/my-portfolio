@@ -9,6 +9,9 @@ import { FaGithub } from "react-icons/fa";
 export default function Topbar() {
 
     const myResumeLink = () => {window.open('https://www.youtube.com/watch?v=oHg5SJYRHA0&t=2s')}
+    const githubProfile = () => {window.open('https://github.com/azeriand')}
+    const linkedinProfile = () => {window.open('https://www.linkedin.com/in/a-romera-costa/')}
+    const mailTo = 'mailto: a.romeracosta@gmail.com'
     
     return (
         <Card appearance='mate' noPadding color='blue' intensity={700} className='flex justify-between items-center py-2 px-5 rounded-xl'>
@@ -22,9 +25,9 @@ export default function Topbar() {
                 </div>
             </div>
             <div className='flex gap-x-3 justify-end'>
-                <Button appearance='ghost' icon={<FaEnvelope/>} style={{ color: 'black' }}/>
-                <Button appearance='ghost' icon={<FaLinkedinIn/>} style={{ color: 'black' }}/>
-                <Button appearance='ghost' icon={<FaGithub/>} style={{ color: 'black' }}/>
+                <Link href={mailTo}><Button appearance='ghost' icon={<FaEnvelope/>} style={{ color: 'black' }}/></Link>
+                <Button appearance='ghost' icon={<FaLinkedinIn/>} style={{ color: 'black' }} onClick={linkedinProfile}/>
+                <Button appearance='ghost' icon={<FaGithub/>} style={{ color: 'black' }} onClick={githubProfile}/>
             </div>
 
         </Card>
