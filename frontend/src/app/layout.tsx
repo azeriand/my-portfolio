@@ -16,7 +16,9 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
         </section>
         <section className='col-span-9 gap-y-4 flex flex-col'>
           <Topbar/>
-          {children}
+          <div className='overflow-scroll h-[83vh]'>
+            {children}
+          </div>
         </section>
       </body>
     </html>

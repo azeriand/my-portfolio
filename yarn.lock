@@ -522,10 +522,10 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-azeriand-library@^1.14.2:
-  version "1.14.4"
-  resolved "https://registry.yarnpkg.com/azeriand-library/-/azeriand-library-1.14.4.tgz#4653fac5779c4ea8f7023dd881288c9edb240cca"
-  integrity sha512-3IpZvNEiLGOUAew8D9OUeVMsmk8uZ6byMcclten5lH6efJx3jp6TQaVapZ1ySRw/25E1+hAcJjdY2oG6KKNIpA==
+azeriand-library@^1.17.5:
+  version "1.17.5"
+  resolved "https://registry.yarnpkg.com/azeriand-library/-/azeriand-library-1.17.5.tgz#a084dfe3061a12c9cb28035c21f622bd0c2500e3"
+  integrity sha512-zWydzI87GiftvSktjvtsGVhrym4L6O2+8nIt0FmoylDauj5vM9TAehQCSV8lHEiSahdUzpaoOzu3Bl6lEGu8FA==
   dependencies:
     "@emotion/react" "^11.14.0"
     "@emotion/styled" "^11.14.1"
