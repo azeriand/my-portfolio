@@ -26,9 +26,9 @@ export default function Topbar() {
                 </div>
             </div>
             <div className='flex gap-x-3 justify-end'>
-                <Link href={mailTo}><Button appearance='ghost' icon={<FaEnvelope/>} style={{ color: 'black' }}/></Link>
-                <Button appearance='ghost' icon={<FaLinkedinIn/>} style={{ color: 'black' }} onClick={linkedinProfile}/>
-                <Button appearance='ghost' icon={<FaGithub/>} style={{ color: 'black' }} onClick={githubProfile}/>
+                <Link href={mailTo}><Button appearance='ghost' icon={<FaEnvelope size={20}/>} style={{ color: 'black' }}/></Link>
+                <Button appearance='ghost' icon={<FaLinkedinIn size={20}/>} style={{ color: 'black' }} onClick={linkedinProfile}/>
+                <Button appearance='ghost' icon={<FaGithub size={20}/>} style={{ color: 'black' }} onClick={githubProfile}/>
             </div>
 
         </Card>
