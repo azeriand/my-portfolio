@@ -9,6 +9,7 @@ import { FaGithub } from "react-icons/fa";
 export default function Topbar() {
 
     const myResumeLink = () => {window.open('https://www.youtube.com/watch?v=oHg5SJYRHA0&t=2s')}
+    const myLibraryLink = () => {window.open('https://library.andrearc.com/')}
     const githubProfile = () => {window.open('https://github.com/azeriand')}
     const linkedinProfile = () => {window.open('https://www.linkedin.com/in/a-romera-costa/')}
     const mailTo = 'mailto: a.romeracosta@gmail.com'
@@ -17,9 +18,9 @@ export default function Topbar() {
         <Card appearance='mate' noPadding color='blue' intensity={700} className='flex justify-between items-center py-2 px-5 rounded-xl'>
             <div className='flex gap-x-8'>
                 <Link href='/'><Avatar src="/azeriand.jpg"/></Link>
-                <div className='flex gap-x-3'>
+                <div className='flex gap-x-3 items-center'>
                     <Link href='/projects'><Button color='blue' intensity={700} label="Projects" style={{ color: 'black' }}/></Link>
-                    <Link href='/library'><Button color='blue' intensity={700} label="Library" style={{ color: 'black' }}/></Link>
+                    <Button color='blue' intensity={700} label="Library" style={{ color: 'black' }} onClick={myLibraryLink}/>
                     <Link href='/articles'><Button color='blue' intensity={700} label="Articles" style={{ color: 'black' }}/></Link>
                     <Button color='blue' intensity={700} label="Resume" style={{ color: 'black' }} onClick={myResumeLink}/>
                 </div>
