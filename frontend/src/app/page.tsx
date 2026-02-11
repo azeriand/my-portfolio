@@ -95,7 +95,7 @@ export default function Home() {
 
 
 async function getData() {
-  const result = await client.collection('articles').find();
+  const result = await client.collection('articles').find({populate: '*'});
   const articles = result.data;
 
   return articles;
