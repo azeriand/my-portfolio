@@ -43,7 +43,9 @@ export default function Home() {
           <img src='/fitness_app_preview.png' className='col-span-5 rounded-lg'/>
           <article className='col-span-7 gap-y-4 flex flex-col'>
             <p style={{color: '#17A7EE'}} className='font-bold text-xl'> Fitness Tracker App</p>
-            <p style={{ color: 'black'}}> The egiptyans believed...</p>
+            <p style={{ color: 'black'}}>
+              A fitness platform that helps users track workouts and progress in a simple, intuitive way.
+            </p>
             <div className="flex gap-x-2">
               <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}} onClick={fitnessAppPage}/>
               <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={fitnessAppRepo}/>
@@ -61,7 +63,9 @@ export default function Home() {
             </Card>
             <div className='col-span-6 flex flex-col gap-y-4'>
               <p className='font-bold' style={{ color: '#9b8ce9'}}> Azeriand Library</p>
-              <p style={{ color: 'black'}}> The egiptyans believed that the most significant thing you could do in your live was die.</p>
+              <p style={{ color: 'black'}}> 
+                A library of reusable, customizable UI components for consistent application interfaces.
+              </p>
               <div className="flex gap-x-2">
               <Button label="Open" color='purple' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{ color: 'white'}} onClick={libraryPage}/>
               <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{ color: '#9b8ce9'}} onClick={libraryRepo}/>
