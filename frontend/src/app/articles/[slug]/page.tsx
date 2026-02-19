@@ -7,7 +7,7 @@ interface Article {
     id: number;
     title: string;
     content: string;
-    cover: string | null;
+    cover: string | undefined;
 }
 
 
