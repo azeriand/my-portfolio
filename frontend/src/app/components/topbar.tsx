@@ -4,11 +4,12 @@ import { Card, Button, Avatar } from 'azeriand-library';
 import { FaEnvelope } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 
 export default function Topbar() {
 
-    const myResumeLink = () => {window.open('https://www.youtube.com/watch?v=oHg5SJYRHA0&t=2s')}
+    const openResume = () => {window.open("/resume_andrea_romera_costa.pdf", "_blank");};
     const myLibraryLink = () => {window.open('https://library.andrearc.com/')}
     const githubProfile = () => {window.open('https://github.com/azeriand')}
     const linkedinProfile = () => {window.open('https://www.linkedin.com/in/a-romera-costa/')}

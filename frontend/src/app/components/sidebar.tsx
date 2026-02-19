@@ -14,7 +14,7 @@ import { MdWifiTethering } from "react-icons/md";
 export default function Sidebar() {
 
     const mailTo = () => {window.location.href = 'mailto: a.romeracosta@gmail.com'}
-    const myResumeLink = () => {window.open('https://www.youtube.com/watch?v=oHg5SJYRHA0&t=2s')}
+    const openResume = () => {window.open("/resume_andrea_romera_costa.pdf", "_blank");};
 
 
   return (
