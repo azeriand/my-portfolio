@@ -1,6 +1,4 @@
-'use client'
 import { Card, Button } from 'azeriand-library';
-import { useEffect, useState } from 'react';
 import ReactMarkdown from "react-markdown";
 
 interface Article {
@@ -21,7 +19,23 @@ function RichText({ content }: { content: string }) {
   );
 }
 
-export default function ArticlePage({ article }: { article: Article }) {
+export default async function ArticlePage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+
+  const article = await getArticle(params.slug)
+
+  if (!article) {
+    return (
+      <Card appearance="mate" color="red" intensity={500} className='justify-center'>
+        <h1 style={{ color: 'black' }} className='font-bold text-4xl!'>Article Not Found</h1>
+        <p style={{ color: 'black' }} className='text-lg mt-4'>The article you are looking for does not exist.</p>
+      </Card>
+    );
+  }
+
   return (
     <Card appearance="mate" color="orange" intensity={500} className='justify-center'>
         <img src={article.cover} alt='Article image' className='w-full h-80! object-cover rounded-lg'/>
@@ -35,10 +49,9 @@ export default function ArticlePage({ article }: { article: Article }) {
   )
 }
 
-export async function getServerSideProps({params}: { params: { slug: string } }) {
+export async function getArticle(slug: string) {
 
     let article: Article;
-    const { slug } = params;
 
     console.log("Fetching article with ID:", slug); // Log the article ID to ensure it's being received correctly
     const res = await fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
@@ -61,5 +74,5 @@ export async function getServerSideProps({params}: { params: { slug: string } })
     };
  
   // Pass data to the page via props
-  return { props: { article } }
+  return article;
 }
