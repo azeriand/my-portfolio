@@ -660,10 +660,10 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-azeriand-library@^1.17.5:
-  version "1.17.5"
-  resolved "https://registry.npmjs.org/azeriand-library/-/azeriand-library-1.17.5.tgz"
-  integrity sha512-zWydzI87GiftvSktjvtsGVhrym4L6O2+8nIt0FmoylDauj5vM9TAehQCSV8lHEiSahdUzpaoOzu3Bl6lEGu8FA==
+azeriand-library@^1.17.6:
+  version "1.17.6"
+  resolved "https://registry.yarnpkg.com/azeriand-library/-/azeriand-library-1.17.6.tgz#0377fc0cab6ac65649b16a8b8317a0fcbf16809c"
+  integrity sha512-yfJ4Du9HQ2GXpLurdB62xeCZK1x8PtKYcFJ/sauNzmESEYWeCidwbmKsOMz1Wbj4tTlqpiblaw3GFZtkuRqBqQ==
   dependencies:
     "@emotion/react" "^11.14.0"
     "@emotion/styled" "^11.14.1"
