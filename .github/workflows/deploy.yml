@@ -47,21 +47,45 @@ jobs:
         run: cd backend && npm run build
 
       - name: Start Strapi
-        run: cd backend && timeout 120 npm run start &
+        env:
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET || 'test-jwt-secret-do-not-use-in-production' }}
+          API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT || 'test-api-token-salt-do-not-use-in-production' }}
+          TRANSFER_TOKEN_SALT: ${{ secrets.TRANSFER_TOKEN_SALT || 'test-transfer-token-salt-do-not-use-in-production' }}
+          ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY || 'test-encryption-key-do-not-use-in-production' }}
+          APP_KEYS: ${{ secrets.APP_KEYS || 'test-app-key-1,test-app-key-2' }}
+          NODE_ENV: production
+        run: cd backend && timeout 120 npm run start > strapi.log 2>&1 &
         
       - name: Wait for Strapi to be ready
         run: |
           echo "Waiting for Strapi to start..."
+          STRAPI_READY=0
+          
           for i in {1..60}; do
             if curl -s http://localhost:1337/api/articles > /dev/null 2>&1; then
-              echo "Strapi is ready!"
-              exit 0
+              echo "✅ Strapi is ready!"
+              STRAPI_READY=1
+              break
             fi
-            echo "Attempt $i: Waiting for Strapi..."
+            
+            # Check if Strapi process crashed
+            if ! ps aux | grep -v grep | grep "node" | grep -q "strapi"; then
+              echo "❌ Strapi process crashed"
+              echo "--- Strapi logs ---"
+              tail -50 backend/strapi.log || echo "No log file found"
+              exit 1
+            fi
+            
+            echo "⏳ Attempt $i/60: Waiting for Strapi..."
             sleep 2
           done
-          echo "Strapi failed to start"
-          exit 1
+          
+          if [ $STRAPI_READY -eq 0 ]; then
+            echo "❌ Strapi failed to start after 120 seconds"
+            echo "--- Strapi logs ---"
+            tail -50 backend/strapi.log || echo "No log file found"
+            exit 1
+          fi
 
       - name: Build Next.js for static export
         run: cd frontend && npm run build
