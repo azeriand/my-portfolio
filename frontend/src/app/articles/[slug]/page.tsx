@@ -7,6 +7,18 @@ interface Article {
     cover: string | undefined;
 }
 
+export async function generateStaticParams() {
+  const res = await fetch(`http://localhost:1337/api/articles?populate=*`, {
+    next: { revalidate: false },
+  })
+  
+  const data = await res.json();
+  
+  return data.data.map((article: any) => ({
+    slug: article.slug,
+  }))
+}
+
 export default async function ArticlePage({
   params,
 }: {
@@ -25,7 +37,7 @@ export async function getArticle(slug: string) {
 
     console.log("Fetching article with ID:", slug); // Log the article ID to ensure it's being received correctly
     const res = await fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
-        cache: "no-store",
+        next: { revalidate: false },
     })
 
     const data = await res.json();
