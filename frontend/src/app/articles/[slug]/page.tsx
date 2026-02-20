@@ -21,40 +21,7 @@ function RichText({ content }: { content: string }) {
   );
 }
 
-export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-    const [article, setArticle] = useState<Article>({
-        id: 0,
-        title: '404: Not Found :(',
-        content: '',
-        cover: "/fitness_app_preview.png",
-    });
-    
-    useEffect(() => {
-        params.then(({slug}) => {
-            console.log("Fetching article with ID:", slug); // Log the article ID to ensure it's being received correctly
-            fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
-                cache: "no-store",
-            }).then(res => {
-                return res.json();
-            }).then(data => {
-                console.log("API Response for Article:", data); // Log the API response to check its structure
-                if (data.data.length === 0) {
-                    console.warn("No article found with the given slug."); // Log a warning if no article is found
-                } //404 not found.
-                
-                setArticle({
-                    id: data.data[0].id,
-                    title: data.data[0].title,
-                    content: data.data[0].blocks[0].body,
-                    cover: data.data[0].cover?.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${data.data[0].cover.url}` : '/default-image.png'
-                });
-            })
-        })
-
-        
-    }, [])
-
-    
+export default function ArticlePage({ article }: { article: Article }) {
   return (
     <Card appearance="mate" color="orange" intensity={500} className='justify-center'>
         <img src={article.cover} alt='Article image' className='w-full h-80! object-cover rounded-lg'/>
@@ -66,4 +33,33 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
         </article>
     </Card>
   )
+}
+
+export async function getServerSideProps({params}: { params: { slug: string } }) {
+
+    let article: Article;
+    const { slug } = params;
+
+    console.log("Fetching article with ID:", slug); // Log the article ID to ensure it's being received correctly
+    const res = await fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
+        cache: "no-store",
+    })
+
+    const data = await res.json();
+
+    
+    console.log("API Response for Article:", data); // Log the API response to check its structure
+    if (data.data.length === 0) {
+        console.warn("No article found with the given slug."); // Log a warning if no article is found
+    } //404 not found.
+    
+    article = {
+        id: data.data[0].id,
+        title: data.data[0].title,
+        content: data.data[0].blocks[0].body,
+        cover: data.data[0].cover?.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${data.data[0].cover.url}` : '/default-image.png'
+    };
+ 
+  // Pass data to the page via props
+  return { props: { article } }
 }
