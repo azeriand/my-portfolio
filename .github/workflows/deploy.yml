@@ -49,6 +49,7 @@ jobs:
       - name: Start Strapi
         env:
           ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET || 'test-jwt-secret-do-not-use-in-production' }}
+          CUSTOM_JWT_SECRET: ${{ secrets.CUSTOM_JWT_SECRET || 'test-custom-jwt-secret-do-not-use-in-production' }}
           API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT || 'test-api-token-salt-do-not-use-in-production' }}
           TRANSFER_TOKEN_SALT: ${{ secrets.TRANSFER_TOKEN_SALT || 'test-transfer-token-salt-do-not-use-in-production' }}
           ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY || 'test-encryption-key-do-not-use-in-production' }}
