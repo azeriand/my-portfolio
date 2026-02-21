@@ -41,17 +41,11 @@ jobs:
         run: cd backend && npm ci
 
       - name: Install frontend dependencies
-        run: cd frontend && npm ci
-
-      - name: Rebuild native modules for Linux
         run: |
           cd frontend
+          rm -rf node_modules package-lock.json
+          npm install
           npm rebuild --verbose
-          # Ensure lightningcss binary is available
-          if [ ! -f node_modules/lightningcss/node/lightningcss.linux-x64-gnu.node ]; then
-            echo "Installing lightningcss prebuilt binary..."
-            npm install --no-save lightningcss@latest
-          fi
 
       - name: Build Strapi
         run: cd backend && npm run build
