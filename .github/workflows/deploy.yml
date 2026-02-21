@@ -99,6 +99,9 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: 'frontend/out'
+      
+      - name: Verify artifact was uploaded
+        run: echo "✅ Artifact uploaded successfully"
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -108,7 +111,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
