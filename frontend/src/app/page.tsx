@@ -1,9 +1,6 @@
 import client from "../../strapi";
 import Homepage from "./components/homepage";
 
-// Artículos importados del archivo generado durante el build
-import articlesData from '../../.cache/articles.json';
-
 async function getData() {
   const result = await client.collection('articles').find({populate: '*'});
   const articles = result.data;
