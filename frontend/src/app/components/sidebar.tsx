@@ -3,9 +3,9 @@
 import { Card, Button } from 'azeriand-library';
 import { FaReact } from "react-icons/fa";
 import { RiNextjsFill } from "react-icons/ri";
-import { IoLogoJavascript } from "react-icons/io";
+import { BiLogoJavascript } from "react-icons/bi";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { FaNodeJs } from "react-icons/fa";
+import { SiStrapi } from "react-icons/si";
 import { FaEnvelope } from "react-icons/fa";
 import { TbRadar2 } from "react-icons/tb";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
@@ -13,6 +13,8 @@ import { SiStorybook } from "react-icons/si";
 import { BiLogoTypescript } from "react-icons/bi";
 import { SiVite } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
+import { FaGit } from "react-icons/fa6";
+
 
 export default function Sidebar() {
 
@@ -35,21 +37,29 @@ export default function Sidebar() {
             </div>
         </Card>
         
-        <section className='grid grid-cols-12 gap-x-1 w-full h-16'>
-            <Button appearance='mate' color='red' intensity={300} icon={<FaArrowUpRightFromSquare/>} label='Resume' style={{ color: 'black' }} className='col-span-6 w-full font-bold rounded-xl' onClick={openResume}/>
-            <Button appearance='mate' color='red' intensity={300} icon={<FaEnvelope/>} label="Let's talk!" style={{ color: 'black' }} className='col-span-6 w-full font-bold rounded-xl' onClick={mailTo}/>
+        <Card appearance='outlined' color='red' intensity={300} style={{ color: '#f59e31'}} className='flex flex-col gap-y-3 w-full h-fit rounded-xl'>
+            <p className='font-bold' style={{ color: 'black' }}>Want to talk?</p>
+            <p style={{ color: 'black' }} className='text-sm'>Feel free to check my resume and reach out for questions or just a friendly chat!</p>
+            <section className='flex gap-x-2'>
+                <Button appearance='mate' size='sm' color='red' intensity={200} icon={<FaArrowUpRightFromSquare/>} label='Resume' style={{ color: 'black', padding: '0.75rem 1rem' }} className='font-bold' onClick={openResume}/>
+                <Button appearance='mate' size='sm' color='red' intensity={200} icon={<FaEnvelope/>} label="Contact me!" style={{ color: 'black', padding: '0.75rem 1rem' }} className='font-bold' onClick={mailTo}/>
+            </section>
+        </Card>
+        
+        <section className='grid grid-cols-5 grid-rows-2 justify-items-center w-full h-fit gap-1'>
+            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoJavascript size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoTypescript size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<FaReact size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<SiVite size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<RiTailwindCssFill size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<RiNextjsFill size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<FaGit size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<FaGithub size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<SiStorybook size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<SiStrapi size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
         </section>
-        <section className='grid grid-cols-4 grid-rows-2 justify-items-center w-full gap-1'>
-            <Button appearance='mate' color='red' intensity={200} icon={<IoLogoJavascript size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaReact size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiTailwindCssFill size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiNextjsFill size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoTypescript size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaGithub size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiVite size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiStorybook size={30}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
 
-        </section>
+        
     </div>
   );
 }
