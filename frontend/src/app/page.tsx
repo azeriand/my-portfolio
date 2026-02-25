@@ -4,36 +4,16 @@ import Link from "next/link";
 import { Card, Button, Badge } from "azeriand-library";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
-import { useEffect, useState } from "react";
+
+// Artículos importados del archivo generado durante el build
+import articlesData from '../../.cache/articles.json';
 
 export default function Home() {
-  const [articles, setArticles] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const strapiUrl = 'http://localhost:1337'; // During build, Strapi is available locally
-        const res = await fetch(`${strapiUrl}/api/articles?populate=*`);
-        
-        if (!res.ok) throw new Error('Failed to fetch articles');
-        
-        const data = await res.json();
-        const articles = data.data || [];
-        const maxArticlesShowed = 3;
-        const lastArticles = articles.slice(articles.length - maxArticlesShowed, articles.length).reverse();
-        
-        setArticles(lastArticles);
-      } catch (error) {
-        console.error('Error fetching articles:', error);
-        setArticles([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+  // Obtener los 3 últimos artículos
+  const maxArticlesShowed = 3;
+  const articles = articlesData
+    .slice(Math.max(0, articlesData.length - maxArticlesShowed), articlesData.length)
+    .reverse();
 
   const fitnessAppPage = () =>{window.open('https://fitness.andrearc.com/')}
   const fitnessAppRepo = () =>{window.open('https://github.com/azeriand/fitness-app')}

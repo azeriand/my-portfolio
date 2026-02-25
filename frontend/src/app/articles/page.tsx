@@ -3,33 +3,12 @@
 import Link from "next/link";
 import {Card, Button, Badge} from 'azeriand-library';
 import { BsArrowReturnRight } from "react-icons/bs";
-import { useEffect, useState } from "react";
+
+// Artículos importados del archivo generado durante el build
+import articlesData from '../../.cache/articles.json';
 
 export default function Articles() {
-    const [articles, setArticles] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchArticles = async () => {
-            try {
-                const strapiUrl = 'http://localhost:1337'; // During build, Strapi is available locally
-                const res = await fetch(`${strapiUrl}/api/articles?populate=*`);
-                
-                if (!res.ok) throw new Error('Failed to fetch articles');
-                
-                const data = await res.json();
-                console.log("Fetched Articles:", data.data);
-                setArticles(data.data || []);
-            } catch (error) {
-                console.error('Error fetching articles:', error);
-                setArticles([]);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchArticles();
-    }, []);
+    const articles: any[] = articlesData;
     
     const isWideStyle = 'grid grid-cols-12 col-span-8 gap-x-[2rem]';
     const isNarrowStyle = 'grid grid-rows-12 col-span-4 gap-y-[1rem]';
@@ -56,4 +35,5 @@ export default function Articles() {
         </Card>
     )
 }
+
 
