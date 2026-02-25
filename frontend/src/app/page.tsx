@@ -83,7 +83,7 @@ export default async function Home() {
               <Button appearance="mate" color="orange" intensity={800} label='View all'/>
             </Link>
           </section>
-          {articles.map(article => 
+          {articles.map((article: any) => 
             <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
               <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
               <article className='flex flex-col gap-y-1'>
