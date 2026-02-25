@@ -1,27 +1,35 @@
+'use client';
+
 import Link from "next/link";
 import {Card, Button, Badge} from 'azeriand-library';
 import { BsArrowReturnRight } from "react-icons/bs";
+import { useEffect, useState } from "react";
 
-async function getData() {
-  try {
-    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-    const res = await fetch(`${strapiUrl}/api/articles?populate=*`, {
-      next: { revalidate: false },
-    });
-    
-    if (!res.ok) throw new Error('Failed to fetch articles');
-    
-    const data = await res.json();
-    console.log("Fetched Articles:", data.data);
-    return data.data || [];
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-    return [];
-  }
-}
+export default function Articles() {
+    const [articles, setArticles] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-export default async function Articles() {
-    const articles = await getData();
+    useEffect(() => {
+        const fetchArticles = async () => {
+            try {
+                const strapiUrl = 'http://localhost:1337'; // During build, Strapi is available locally
+                const res = await fetch(`${strapiUrl}/api/articles?populate=*`);
+                
+                if (!res.ok) throw new Error('Failed to fetch articles');
+                
+                const data = await res.json();
+                console.log("Fetched Articles:", data.data);
+                setArticles(data.data || []);
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+                setArticles([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchArticles();
+    }, []);
     
     const isWideStyle = 'grid grid-cols-12 col-span-8 gap-x-[2rem]';
     const isNarrowStyle = 'grid grid-rows-12 col-span-4 gap-y-[1rem]';
@@ -48,3 +56,4 @@ export default async function Articles() {
         </Card>
     )
 }
+
