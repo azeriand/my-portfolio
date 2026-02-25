@@ -1,26 +1,32 @@
 'use client'
-import client from "../../../strapi";
 import { useEffect, useState } from 'react';
 import Link from "next/link";
 import {Card, Button, Badge} from 'azeriand-library';
 import { BsArrowReturnRight } from "react-icons/bs";
 
-export const dynamic = "force-static";
-
 export default function Articles() {
 
     const [articles, setArticles] = useState<any[]>([]);
+    const [articlesFetched, setArticlesFetched] = useState(false);
 
     const fetchArticles = async () => {
-        const data = await getData();
-        console.log("API Response:", data); // Log the API response
-        setArticles(data);
+        if (articlesFetched) return;
+        
+        try {
+            const data = await getData();
+            console.log("API Response:", data);
+            setArticles(data);
+        } catch (error) {
+            console.error('Failed to fetch articles:', error);
+            setArticles([]);
+        } finally {
+            setArticlesFetched(true);
+        }
     }
 
     useEffect(() => {
         fetchArticles();
-        console.log(articles)
-    }, []);
+    }, [articlesFetched]);
     
     const isWideStyle = 'grid grid-cols-12 col-span-8 gap-x-[2rem]';
     const isNarrowStyle = 'grid grid-rows-12 col-span-4 gap-y-[1rem]';
@@ -49,7 +55,19 @@ export default function Articles() {
 }
 
 async function getData() {
-  const result = await client.collection('articles').find({ populate: 'cover' }); // Ensure 'cover' is populated
-  console.log("Fetched Articles:", result.data); // Log the fetched articles
-  return result.data;
+  try {
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+    const res = await fetch(`${strapiUrl}/api/articles?populate=*`, {
+      next: { revalidate: false },
+    });
+    
+    if (!res.ok) throw new Error('Failed to fetch articles');
+    
+    const data = await res.json();
+    console.log("Fetched Articles:", data.data);
+    return data.data || [];
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return [];
+  }
 }

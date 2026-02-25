@@ -7,16 +7,23 @@ interface Article {
     cover: string | undefined;
 }
 
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+
 export async function generateStaticParams() {
-  const res = await fetch(`http://localhost:1337/api/articles?populate=*`, {
-    next: { revalidate: false },
-  })
-  
-  const data = await res.json();
-  
-  return data.data.map((article: any) => ({
-    slug: article.slug,
-  }))
+  try {
+    const res = await fetch(`${STRAPI_URL}/api/articles?populate=*`, {
+      next: { revalidate: false },
+    })
+    
+    const data = await res.json();
+    
+    return data.data.map((article: any) => ({
+      slug: article.slug,
+    }))
+  } catch (error) {
+    console.error('Failed to generate static params:', error);
+    return [];
+  }
 }
 
 export default async function ArticlePage({
@@ -36,7 +43,7 @@ export async function getArticle(slug: string) {
     let article: Article;
 
     console.log("Fetching article with ID:", slug); // Log the article ID to ensure it's being received correctly
-    const res = await fetch(`http://localhost:1337/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
+    const res = await fetch(`${STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
         next: { revalidate: false },
     })
 

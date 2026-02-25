@@ -3,26 +3,33 @@
 
 import Link from "next/link";
 import{ useState, useEffect } from "react";
-import client from "../../strapi";
 import { Card, Button, Badge } from "azeriand-library";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 
-export const dynamic = "force-static";
-
 export default function Home() {
 
   const [articles, setArticles] = useState<any[]>([]);
+  const [articlesFetched, setArticlesFetched] = useState(false);
 
   const fetchArticles = async () => {
-    const data = await getData();
-    console.log(data);
-    setArticles(data);
+    if (articlesFetched) return;
+    
+    try {
+      const data = await getData();
+      console.log(data);
+      setArticles(data);
+    } catch (error) {
+      console.error('Failed to fetch articles:', error);
+      setArticles([]);
+    } finally {
+      setArticlesFetched(true);
+    }
   }
 
   useEffect(() => {
     fetchArticles();
-  }, []);
+  }, [articlesFetched]);
 
   const fitnessAppPage = () =>{window.open('https://fitness.andrearc.com/')}
   const fitnessAppRepo = () =>{window.open('https://github.com/azeriand/fitness-app')}
@@ -97,11 +104,22 @@ export default function Home() {
 
 
 async function getData() {
-
-  const result = await client.collection('articles').find({populate: '*'});
-  const articles = result.data;
-  const maxArticlesShowed = 3
-  const lastArticles = articles.slice(articles.length - maxArticlesShowed, articles.length).reverse();
-
-  return lastArticles;
+  try {
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+    const res = await fetch(`${strapiUrl}/api/articles?populate=*`, {
+      next: { revalidate: false },
+    });
+    
+    if (!res.ok) throw new Error('Failed to fetch articles');
+    
+    const data = await res.json();
+    const articles = data.data || [];
+    const maxArticlesShowed = 3;
+    const lastArticles = articles.slice(articles.length - maxArticlesShowed, articles.length).reverse();
+    
+    return lastArticles;
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return [];
+  }
 }
