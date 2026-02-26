@@ -20,7 +20,7 @@ interface HomePageProps {
 
 export default function HomePage({ articles }: HomePageProps) {
   return (
-    <Card noPadding appearance='ghost' className='gap-4 flex flex-col'>
+    <div className='gap-4 flex flex-col'>
       <Card appearance='mate' color="blue" intensity={500} className='flex flex-col gap-y-4 rounded-xl'>
         <section className="flex justify-between items-center rounded-xl">
           <p className="text-base font-bold" style={{color: '#17A7EE'}}>Featured Project</p>
@@ -83,6 +83,6 @@ export default function HomePage({ articles }: HomePageProps) {
           )}
         </Card>
       </section>
-    </Card>
+    </div>
   );
 }
