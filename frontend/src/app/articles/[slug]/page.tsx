@@ -59,7 +59,8 @@ export async function getArticle(slug: string) {
         id: data.data[0].id,
         title: data.data[0].title,
         content: data.data[0].blocks[0].body,
-        cover: data.data[0].cover?.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${data.data[0].cover.url}` : '/default-image.png'
+        // For static export, use local uploads folder
+        cover: data.data[0].cover?.url ? `/uploads/${data.data[0].cover.url.split('/').pop()}` : '/default-image.png'
     };
  
   // Pass data to the page via props

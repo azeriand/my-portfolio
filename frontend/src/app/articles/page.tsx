@@ -9,7 +9,6 @@ async function getData() {
 
 export default async function Articles() {
   const articles = await getData();
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
-  return <ArticlesPage articles={articles as any} strapiUrl={strapiUrl} />;
+  return <ArticlesPage articles={articles as any} />;
 }

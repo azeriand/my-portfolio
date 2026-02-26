@@ -50,3 +50,6 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+# Downloaded Strapi images (regenerated at build time)
+frontend/public/uploads/
