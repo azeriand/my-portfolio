@@ -21,7 +21,6 @@ export default function Sidebar() {
     const mailTo = () => {window.location.href = 'mailto: a.romeracosta@gmail.com'}
     const openResume = () => {window.open("/resume_andrea_romera_costa.pdf", "_blank");};
 
-
   return (
     <div className='w-full flex flex-col gap-y-4'>
         <img src='/azeriand.png' alt="Azeriand Logo" className='w-full rounded-xl'/>
@@ -47,16 +46,16 @@ export default function Sidebar() {
         </Card>
         
         <section className='grid grid-cols-5 grid-rows-2 justify-items-center w-full h-fit gap-1'>
-            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoJavascript size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoTypescript size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaReact size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiVite size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiTailwindCssFill size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiNextjsFill size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaGit size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaGithub size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiStorybook size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiStrapi size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='JavaScript' icon={<BiLogoJavascript size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='TypeScript' icon={<BiLogoTypescript size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='React' icon={<FaReact size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='Vite' icon={<SiVite size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='Tailwind CSS' icon={<RiTailwindCssFill size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='Next.js' icon={<RiNextjsFill size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='Git' icon={<FaGit size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='GitHub' icon={<FaGithub size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='Storybook' icon={<SiStorybook size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} title='Strapi' icon={<SiStrapi size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
         </section>
 
         
