@@ -25,3 +25,16 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.card {
+  border-radius: 0.75rem; /* equivalente a rounded-xl */
+  transition: 
+    transform 0.2s ease-in-out, 
+    box-shadow 0.2s ease-in-out, 
+    background-color 0.2s ease-in-out; /* transición suave */
+}
+
+.card:hover {
+  transform: translateY(-0.10rem); /* equivalente a -translate-y-1 */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0,0,0,0.05); /* shadow-lg aproximado */
+}
