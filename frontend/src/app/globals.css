@@ -38,3 +38,8 @@ body {
   transform: translateY(-0.10rem); /* equivalente a -translate-y-1 */
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0,0,0,0.05); /* shadow-lg aproximado */
 }
+
+.card.click:focus {
+  border: 2px solid #ffefdc;
+  background-color: rgba(255, 239, 220, 0.1);
+}

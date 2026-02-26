@@ -23,7 +23,7 @@ export default function Sidebar() {
 
   return (
     <div className='w-full flex flex-col gap-y-4'>
-        <img src='/azeriand.png' alt="Azeriand Logo" className='w-full rounded-xl'/>
+        <img src='/azeriand.png' alt="Azeriand Logo" className='card w-full rounded-xl'/>
         <Card noPadding appearance='mate' color='red' intensity={200} className='flex flex-col gap-y-3 p-10 rounded-xl'>
             <section>
                 <h1 style={{color: '#f54c4a', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-[1.9rem]! font-extrabold! flex-wrap'>Andrea Romera</h1>
