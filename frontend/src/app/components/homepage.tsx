@@ -8,6 +8,10 @@ interface Article {
   id: string;
   title: string;
   description: string;
+  slug: string;
+  cover?: {
+    url: string;
+  };
 }
 
 interface HomePageProps {
@@ -67,13 +71,15 @@ export default function HomePage({ articles }: HomePageProps) {
             </Link>
           </section>
           {articles.map(article => 
-            <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
-              <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
-              <article className='flex flex-col gap-y-1'>
-                <h3 style={{ color: 'black'}} className='font-bold'>{article.title}</h3>
-                <p style={{ color: 'black'}}>{article.description}</p>
-              </article>
-            </Card>
+            <Link href={`/articles/${article.slug}`} key={article.id}>
+              <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
+                <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
+                <article className='flex flex-col gap-y-1'>
+                  <h3 style={{ color: 'black'}} className='font-bold'>{article.title}</h3>
+                  <p style={{ color: 'black'}}>{article.description}</p>
+                </article>
+              </Card>
+            </Link>
           )}
         </Card>
       </section>
