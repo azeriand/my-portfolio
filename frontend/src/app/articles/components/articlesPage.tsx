@@ -4,6 +4,9 @@ import Link from "next/link";
 import { Card, Button } from 'azeriand-library';
 import { BsArrowReturnRight } from "react-icons/bs";
 
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+
 interface Article {
   id: string;
   title: string;
@@ -28,7 +31,7 @@ export default function ArticlesPage({ articles }: ArticlesPageProps) {
       {articles.map((article, index) => {
         // For static export, images are downloaded to /uploads during build
         const imgUrl = article.cover?.url 
-          ? `/uploads/${article.cover.url.split('/').pop()}` 
+          ? `${STRAPI_URL}${article.cover.url}` 
           : '/default-image.png';
         
         return (

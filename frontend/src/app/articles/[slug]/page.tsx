@@ -1,10 +1,12 @@
 import { ArticleClient } from './article-client';
-
+import client from "../../../../strapi";
 interface Article {
     id: number;
     title: string;
-    content: string;
-    cover: string | undefined;
+    content?: string;
+    cover?: string | undefined;
+    slug?: string;
+    description?: string;
 }
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
@@ -34,15 +36,15 @@ export default async function ArticlePage({
 
   const { slug } = await params
   const article = await getArticle(slug)
+  const lastArticles = await getLastArticles(slug)
 
-  return <ArticleClient article={article} />
+  return <ArticleClient article={article} lastArticles={lastArticles} />
 }
 
 export async function getArticle(slug: string) {
 
     let article: Article;
 
-    console.log("Fetching article with ID:", slug); // Log the article ID to ensure it's being received correctly
     const res = await fetch(`${STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
         next: { revalidate: false },
     })
@@ -60,9 +62,37 @@ export async function getArticle(slug: string) {
         title: data.data[0].title,
         content: data.data[0].blocks[0].body,
         // For static export, use local uploads folder
-        cover: data.data[0].cover?.url ? `/uploads/${data.data[0].cover.url.split('/').pop()}` : '/default-image.png'
+        cover: data.data[0].cover?.url ? `${STRAPI_URL}${data.data[0].cover.url}` : '/default-image.png'
     };
  
   // Pass data to the page via props
   return article;
+}
+
+export async function getLastArticles(excludedSlug: string) {
+  let lastArticles: Article[] = [];
+  const result = await client.collection('articles').find({
+  filters: {
+    slug: { $ne: excludedSlug },
+  },
+  populate: '*',
+  sort: ['createdAt:desc'], // sort by creation date, newest first
+  pagination: {
+    start: 0,
+    limit: 5,
+  },
+});
+  const fetchedDocuments = result.data;
+  const reversedDocuments = fetchedDocuments.reverse();
+  reversedDocuments.forEach((doc: any) => {
+    lastArticles.push({
+      id: doc.id,
+      title: doc.title,
+      description: doc.description,
+      slug: doc.slug,
+      cover: doc.cover?.url ? `${STRAPI_URL}${doc.cover.url.split('/').pop()}` : '/default-image.png'
+    });
+  });
+  
+  return lastArticles;
 }
