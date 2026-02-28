@@ -62,7 +62,7 @@ export async function getArticle(slug: string) {
         title: data.data[0].title,
         content: data.data[0].blocks[0].body,
         // For static export, use local uploads folder
-        cover: data.data[0].cover?.url ? `/uploads/${data.data[0].cover.url.split('/').pop()}` : '/default-image.png'
+        cover: data.data[0].cover?.url ? `${STRAPI_URL}${data.data[0].cover.url}` : '/default-image.png'
     };
  
   // Pass data to the page via props
@@ -90,7 +90,7 @@ export async function getLastArticles(excludedSlug: string) {
       title: doc.title,
       description: doc.description,
       slug: doc.slug,
-      cover: doc.cover?.url ? `/uploads/${doc.cover.url.split('/').pop()}` : '/default-image.png'
+      cover: doc.cover?.url ? `${STRAPI_URL}${doc.cover.url.split('/').pop()}` : '/default-image.png'
     });
   });
   
