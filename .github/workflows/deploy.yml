@@ -95,6 +95,7 @@ jobs:
       - name: Build Next.js for static export
         env:
           NEXT_PUBLIC_STRAPI_URL: http://localhost:1337
+          NODE_ENV: production
         run: cd frontend && npm run build
 
       - name: Upload artifact

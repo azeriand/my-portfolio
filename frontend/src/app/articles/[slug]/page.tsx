@@ -57,12 +57,18 @@ export async function getArticle(slug: string) {
         console.warn("No article found with the given slug."); // Log a warning if no article is found
     } //404 not found.
     
+    // Use static uploads in production, Strapi URL in development
+    const useStaticImages = process.env.NODE_ENV === 'production';
+    
     article = {
         id: data.data[0].id,
         title: data.data[0].title,
         content: data.data[0].blocks[0].body,
-        // For static export, use local uploads folder
-        cover: data.data[0].cover?.url ? `/uploads/${data.data[0].cover.url.split('/').pop()}` : '/default-image.png'
+        cover: data.data[0].cover?.url 
+          ? (useStaticImages 
+              ? `/uploads/${data.data[0].cover.url.split('/').pop()}` 
+              : `${STRAPI_URL}${data.data[0].cover.url}`)
+          : '/default-image.png'
     };
  
   // Pass data to the page via props
@@ -84,13 +90,21 @@ export async function getLastArticles(excludedSlug: string) {
 });
   const fetchedDocuments = result.data;
   const reversedDocuments = fetchedDocuments.reverse();
+  
+  // Use static uploads in production, Strapi URL in development
+  const useStaticImages = process.env.NODE_ENV === 'production';
+  
   reversedDocuments.forEach((doc: any) => {
     lastArticles.push({
       id: doc.id,
       title: doc.title,
       description: doc.description,
       slug: doc.slug,
-      cover: doc.cover?.url ? `/uploads/${doc.cover.url.split('/').pop()}` : '/default-image.png'
+      cover: doc.cover?.url 
+        ? (useStaticImages 
+            ? `/uploads/${doc.cover.url.split('/').pop()}` 
+            : `${STRAPI_URL}${doc.cover.url}`)
+        : '/default-image.png'
     });
   });
   
