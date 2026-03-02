@@ -16,19 +16,24 @@ interface Article {
 
 interface ArticlesPageProps {
   articles: Article[];
+  strapiUrl?: string;
 }
 
-export default function ArticlesPage({ articles }: ArticlesPageProps) {
+export default function ArticlesPage({ articles, strapiUrl }: ArticlesPageProps) {
   const isWideStyle = 'grid grid-cols-12 col-span-8 gap-x-[2rem]';
   const isNarrowStyle = 'grid grid-rows-12 col-span-4 gap-y-[1rem]';
   const isWide = (index: number) => index % 4 === 1 || index % 4 === 2;
+  
+  // Use static uploads in production, Strapi URL in development
+  const useStaticImages = process.env.NODE_ENV === 'production';
 
   return (
     <Card appearance="mate" color="orange" intensity={500} className='grid grid-cols-12 gap-4'>
       {articles.map((article, index) => {
-        // For static export, images are downloaded to /uploads during build
         const imgUrl = article.cover?.url 
-          ? `/uploads/${article.cover.url.split('/').pop()}` 
+          ? (useStaticImages 
+              ? `/uploads/${article.cover.url.split('/').pop()}` 
+              : `${strapiUrl}${article.cover.url}`)
           : '/default-image.png';
         
         return (
