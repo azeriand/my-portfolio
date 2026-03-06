@@ -68,7 +68,7 @@ export default function Projects() {
       </Card>
 
       <Card appearance='mate' color="blue" intensity={500} className='grid grid-cols-12 gap-x-8 items-center rounded-xl'>
-        <img src='/fitness_app_preview.png' className='col-span-7 rounded-xl'/>
+        <img src='/portfolio_preview.png' className='col-span-7 rounded-xl'/>
         <Card appearance='ghost' className='flex flex-col gap-y-4 col-span-5 justify-center'>
           <h1 style={{ color: 'black'}} className='text-2xl! font-bold'>Portfolio</h1>
           <p style={{ color: 'black'}}>
