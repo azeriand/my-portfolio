@@ -20,7 +20,7 @@ interface HomePageProps {
 
 export default function HomePage({ articles }: HomePageProps) {
   return (
-    <div className='gap-4 flex flex-col'>
+    <main className='gap-4 flex flex-col min-h-full'>
       <Card appearance='mate' color="blue" intensity={500} className='flex flex-col gap-y-4 rounded-xl'>
         <section className="flex justify-between items-center rounded-xl">
           <p className="text-base font-bold" style={{color: '#17A7EE'}}>Featured Project</p>
@@ -45,10 +45,10 @@ export default function HomePage({ articles }: HomePageProps) {
       </Card>
 
       <section className='grid grid-cols-12 gap-x-4'>
-        <Card appearance='mate' color="purple" intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col h-[22.25rem]'>
+        <Card appearance='mate' color="purple" intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col min-h-[22.25rem]'>
           <p className='text-base font-bold' style={{ color: '#9b8ce9'}}>My Design Library</p>
-          <section className='grid grid-cols-12 gap-x-4'>
-            <img src='/library_preview.png' className='col-span-6 rounded-lg' alt="Library Preview"/>
+          <section className='grid grid-cols-12 gap-x-8'>
+            <img src='/library_preview.png' className='col-span-6 rounded-lg object-cover' alt="Library Preview"/>
             <div className='col-span-6 flex flex-col gap-y-4'>
               <p className='font-bold' style={{ color: '#9b8ce9'}}> Azeriand Library</p>
               <p style={{ color: 'black'}}> 
@@ -63,7 +63,7 @@ export default function HomePage({ articles }: HomePageProps) {
           </section>
         </Card>
 
-        <Card appearance='mate' color='orange' intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col h-[22.25rem] overflow-auto'>
+        <Card appearance='mate' color='orange' intensity={500} className='col-span-6 rounded-xl gap-y-4 flex flex-col min-h-[22.25rem] overflow-auto'>
           <section className="flex justify-between items-center">
             <p className="text-base font-bold" style={{color: '#f59e31'}}>My Latest Articles</p>
             <Link href='/articles'>
@@ -72,7 +72,7 @@ export default function HomePage({ articles }: HomePageProps) {
           </section>
           {articles.map(article => 
             <Link href={`/articles/${article.slug}`} key={article.id}>
-              <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
+              <Card appearance="mate" color="yellow" intensity={500} noPadding className='flex flex-col gap-y-2 p-4 rounded-lg'>
                 <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
                 <article className='flex flex-col gap-y-1'>
                   <h3 style={{ color: 'black'}} className='font-bold'>{article.title}</h3>
@@ -83,6 +83,6 @@ export default function HomePage({ articles }: HomePageProps) {
           )}
         </Card>
       </section>
-    </div>
+    </main>
   );
 }

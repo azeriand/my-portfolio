@@ -11,13 +11,13 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
 
   return (
     <html lang="en">
-      <body className='grid grid-cols-12 gap-x-4 p-12'>
+      <body className='h-screen overflow-hidden grid grid-cols-12 gap-x-4 px-8 pt-8 pb-4'>
         <section className='col-span-3'>
           <Sidebar/>
         </section>
-        <section className='col-span-9 gap-y-4 flex flex-col'>
+        <section className='col-span-9 gap-y-4 flex flex-col h-full min-h-0'>
           <Topbar/>
-          <div className='overflow-scroll h-[83vh]'>
+          <div className='flex-1 overflow-y-auto'>
             {children}
           </div>
         </section>
