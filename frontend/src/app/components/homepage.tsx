@@ -29,15 +29,15 @@ export default function HomePage({ articles }: HomePageProps) {
           </Link>
         </section>
         <section className='grid grid-cols-12 gap-x-14'>
-          <img src='/fitness_app_preview.png' className='col-span-5 rounded-lg' alt="Fitness App Preview"/>
+          <img src='/golden_core_preview.png' className='col-span-5 rounded-lg' alt="Golden Core App Preview"/>
           <article className='col-span-7 gap-y-4 flex flex-col'>
-            <p style={{color: '#17A7EE'}} className='font-bold text-xl'> Fitness Tracker App</p>
+            <p style={{color: '#17A7EE'}} className='font-bold text-xl'> Golden·Core App</p>
             <p style={{ color: 'black'}}>
-              A fitness platform that helps users track workouts and progress in a simple, intuitive way.
+              A premium event photography platform that makes it easy to share, discover, and relive memories in one private designed space.
             </p>
             <ProjectButtons 
-              pageUrl="https://fitness.andrearc.com/" 
-              repoUrl="https://github.com/azeriand/fitness-app" 
+              pageUrl="https://golden-core.andrearc.com/demo" 
+              repoUrl="https://github.com/azeriand/golden-core" 
               color="blue"
             />
           </article>
