@@ -10,9 +10,15 @@ import { FaReact } from "react-icons/fa";
 import { SiVite } from "react-icons/si";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiStorybook } from "react-icons/si";
+import { RiVercelLine } from "react-icons/ri";
+import { RiNodejsLine } from "react-icons/ri";
+import { SiPostgresql } from "react-icons/si";
+import { TbBlob } from "react-icons/tb";
 
 export default function Projects() {
 
+  const goldenCoreAppPage = () => {window.open('https://golden-core.andrearc.com/demo')}
+  const goldenCoreAppRepo = () => {window.open('https://github.com/azeriand/golden-core')}
   const fitnessAppPage = () =>{window.open('https://fitness.andrearc.com/')}
   const fitnessAppRepo = () =>{window.open('https://github.com/azeriand/fitness-app')}
   const libraryPage = () =>{window.open('https://library.andrearc.com/')}
@@ -21,6 +27,31 @@ export default function Projects() {
 
   return (
     <div className='grid gap-y-4'>
+
+      <Card appearance='mate' color="blue" intensity={500} className='grid grid-cols-12 gap-x-8 items-center rounded-xl'>
+        <img src='/golden_core_preview.png' className='col-span-7 rounded-xl'/>
+        <Card appearance='ghost' className='flex flex-col gap-y-4 col-span-5 justify-center'>
+          <h1 style={{ color: 'black'}} className='text-2xl! font-bold'>Golden·Core</h1>
+          <p style={{ color: 'black'}}>
+            A premium event photography platform that makes it easy to share, discover, and relive memories in one private designed space.</p>
+          <section style={{ color: 'black'}} className='flex gap-x-2'>
+            <IoLogoJavascript size={24}/>
+            <FaReact size={24}/>
+            <SiVite size={24}/>
+            <RiTailwindCssFill size={24}/>
+            <FaGithub size={24}/>
+            <RiNextjsFill size={24}/>
+            <RiVercelLine size={24}/>
+            <TbBlob size={24}/>
+            <RiNodejsLine size={24}/>
+            <SiPostgresql size={24}/>
+          </section>
+          <section className="flex gap-x-2">
+            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}} onClick={goldenCoreAppPage}/>
+            <Button appearance='ghost' color='blue' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={goldenCoreAppRepo}/>
+          </section>
+        </Card>
+      </Card>
 
       <Card appearance='mate' color="blue" intensity={500} className='grid grid-cols-12 gap-x-8 items-center rounded-xl'>
         <img src='/fitness_app_preview.png' className='col-span-7 rounded-xl'/>

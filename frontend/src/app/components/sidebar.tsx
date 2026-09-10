@@ -14,7 +14,10 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { SiVite } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
 import { FaGit } from "react-icons/fa6";
-
+import { RiVercelLine } from "react-icons/ri";
+import { RiNodejsLine } from "react-icons/ri";
+import { SiPostgresql } from "react-icons/si";
+import { TbBlob } from "react-icons/tb";
 
 export default function Sidebar() {
 
@@ -56,6 +59,10 @@ export default function Sidebar() {
             <Button appearance='mate' color='red' intensity={200} icon={<FaGithub size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
             <Button appearance='mate' color='red' intensity={200} icon={<SiStorybook size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
             <Button appearance='mate' color='red' intensity={200} icon={<SiStrapi size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<RiVercelLine size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<TbBlob size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<RiNodejsLine size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
+            <Button appearance='mate' color='red' intensity={200} icon={<SiPostgresql size={24}/>} style={{ color: 'black' }} className='w-full aspect-square rounded-xl'/>
         </section>
 
         
