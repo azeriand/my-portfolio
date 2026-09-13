@@ -22,6 +22,9 @@
 }
 
 body {
+  /* App shell is locked to the viewport (h-screen + overflow-hidden set on <body>
+     via Tailwind); only the content region scrolls. Override just the dark
+     background that azeriand-library ships on the body. */
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -42,4 +45,11 @@ body {
 .card.click:focus {
   border: 2px solid #ffefdc;
   background-color: rgba(255, 239, 220, 0.1);
+}
+
+/* Clear, visible keyboard focus for the responsive navigation controls.
+   Uses :focus-visible so it only shows for keyboard users, not mouse clicks. */
+.nav-focusable:focus-visible {
+  outline: 3px solid #f54c4a;
+  outline-offset: 2px;
 }
