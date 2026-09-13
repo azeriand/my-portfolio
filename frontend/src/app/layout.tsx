@@ -30,9 +30,10 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
           </header>
           {/* The only scrolling region */}
           <div className='flex-1 min-h-0 min-w-0 overflow-y-auto mt-4 flex flex-col gap-y-4'>
-            {/* Identity card shown below lg only (sm + md); scrolls with the content
-                (not part of the fixed header). At lg+ the sidebar shows the identity. */}
-            <div className='lg:hidden'>
+            {/* Identity card shown only in the md range (navbar not collapsed).
+                Below md the collapsed nav (MobileNav) shows availability instead.
+                At lg+ the sidebar shows the identity. */}
+            <div className='hidden md:block lg:hidden'>
               <MdIdentityCard/>
             </div>
             {children}

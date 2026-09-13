@@ -93,6 +93,13 @@ export default function MobileNav() {
         </div>
       </Card>
 
+      {/* Availability shown while the navbar is collapsed (this component only
+          renders below md), replacing the full identity card. */}
+      <div className='mt-2 flex p-2 text-sm text-black font-bold justify-center items-center gap-x-2 bg-green-100 border! border-green-200! rounded-lg'>
+        <TbRadar2 size={18} className='shrink-0'/>
+        <span>Available for new projects</span>
+      </div>
+
       {open && (
         <>
           {/* Backdrop */}
