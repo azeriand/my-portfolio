@@ -40,15 +40,15 @@ export function ArticleClient({ article, lastArticles }: ArticleClientProps) {
   console.log("articles array", lastArticles); // Log the article data to ensure it's being passed correctly
   return (
     <Card appearance="mate" color="orange" intensity={500} className='justify-center'>
-        <img src={article.cover} alt='Article image' className='w-full h-80! object-cover rounded-lg'/>
-        <article className='flex flex-col md:flex-row! gap-4 mt-8 px-4'>
-          <div className='basis-2/3'>
-            <h1 style={{ color: 'black' }} className='font-bold text-4xl!'>{article.title}</h1>
-            <div style={{ color: 'black' }} className='w-full flex flex-col flex-wrap items-center'>
+        <img src={article.cover} alt='Article image' className='w-full h-48 sm:h-80! object-cover rounded-lg'/>
+        <article className='flex flex-col md:flex-row! gap-4 mt-8 px-0 sm:px-4'>
+          <div className='basis-2/3 min-w-0'>
+            <h1 style={{ color: 'black' }} className='font-bold text-2xl! sm:text-4xl! break-words'>{article.title}</h1>
+            <div style={{ color: 'black' }} className='w-full min-w-0 flex flex-col'>
                 <RichText content={article.content}/>
             </div>
           </div>
-          <div className='basis-1/3'>
+          <div className='basis-1/3 min-w-0'>
             <h2 style={{ color: 'black' }} className='font-bold text-2xl! mb-4'>Related Articles</h2>
             {lastArticles?.map(article => 
               <Link href={`/articles/${article.slug}`} key={article.id}>

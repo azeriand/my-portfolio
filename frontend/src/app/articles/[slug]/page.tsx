@@ -19,7 +19,7 @@ export async function generateStaticParams() {
     
     const data = await res.json();
     
-    return data.data.map((article: any) => ({
+    return data.data.map((article: { slug: string }) => ({
       slug: article.slug,
     }))
   } catch (error) {
@@ -43,16 +43,12 @@ export default async function ArticlePage({
 
 export async function getArticle(slug: string) {
 
-    let article: Article;
-
     const res = await fetch(`${STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
         next: { revalidate: false },
     })
 
     const data = await res.json();
 
-    
-    console.log("API Response for Article:", data); // Log the API response to check its structure
     if (data.data.length === 0) {
         console.warn("No article found with the given slug."); // Log a warning if no article is found
     } //404 not found.
@@ -60,7 +56,7 @@ export async function getArticle(slug: string) {
     // Use static uploads in production, Strapi URL in development
     const useStaticImages = process.env.NODE_ENV === 'production';
     
-    article = {
+    const article: Article = {
         id: data.data[0].id,
         title: data.data[0].title,
         content: data.data[0].blocks[0].body,
@@ -76,7 +72,7 @@ export async function getArticle(slug: string) {
 }
 
 export async function getLastArticles(excludedSlug: string) {
-  let lastArticles: Article[] = [];
+  const lastArticles: Article[] = [];
   const result = await client.collection('articles').find({
   filters: {
     slug: { $ne: excludedSlug },
@@ -94,16 +90,17 @@ export async function getLastArticles(excludedSlug: string) {
   // Use static uploads in production, Strapi URL in development
   const useStaticImages = process.env.NODE_ENV === 'production';
   
-  reversedDocuments.forEach((doc: any) => {
+  reversedDocuments.forEach((doc) => {
+    const cover = doc.cover as { url?: string } | undefined;
     lastArticles.push({
       id: doc.id,
       title: doc.title,
       description: doc.description,
       slug: doc.slug,
-      cover: doc.cover?.url 
+      cover: cover?.url 
         ? (useStaticImages 
-            ? `/uploads/${doc.cover.url.split('/').pop()}` 
-            : `${STRAPI_URL}${doc.cover.url}`)
+            ? `/uploads/${cover.url.split('/').pop()}` 
+            : `${STRAPI_URL}${cover.url}`)
         : '/default-image.png'
     });
   });
