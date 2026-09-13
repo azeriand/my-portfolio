@@ -1,8 +1,6 @@
 import 'azeriand-library/dist/styles.css';
 import "./globals.css";
 import "./prose.css";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import React from "react";
 import Sidebar from "./components/sidebar";
 import Topbar from './components/topbar';

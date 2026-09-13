@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card, Button, Badge } from "azeriand-library";
 import ProjectButtons from "./projectButtons";
 
-interface Article {
+export interface Article {
   id: string;
   title: string;
   description: string;

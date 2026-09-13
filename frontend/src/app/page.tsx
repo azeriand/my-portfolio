@@ -1,6 +1,5 @@
 import client from "../../strapi";
-import Homepage from "./components/homepage";
-import {ArticleClient} from '@/app/articles/[slug]/article-client';
+import Homepage, { type Article } from "./components/homepage";
 
 export async function getData() {
   const result = await client.collection('articles').find({populate: '*'});
@@ -13,5 +12,5 @@ export async function getData() {
 export default async function Home() {
   const articles = await getData();
 
-  return <Homepage articles={articles as any} />;
+  return <Homepage articles={articles as unknown as Article[]} />;
 }

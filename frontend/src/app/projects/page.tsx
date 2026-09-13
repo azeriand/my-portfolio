@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, Button } from 'azeriand-library';
-import { FaArrowUpRightFromSquare, FaG } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiTailwindCssFill } from "react-icons/ri";
@@ -78,7 +78,7 @@ export default function Projects() {
       <Card appearance='mate' color="blue" intensity={500} className='grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-x-8 items-center rounded-xl'>
         <img src='/azeriand_library_preview.png' alt="Azeriand's Library preview" className='w-full lg:col-span-7 rounded-xl'/>
         <Card appearance='ghost' className='flex flex-col gap-y-4 lg:col-span-5 min-w-0 justify-center'>
-          <h1 style={{ color: 'black'}} className='text-2xl! font-bold'>Azeriand's Library</h1>
+          <h1 style={{ color: 'black'}} className='text-2xl! font-bold'>Azeriand&apos;s Library</h1>
           <p style={{ color: 'black'}}>
             A library of reusable, customizable UI components for consistent application interfaces.            
           </p>

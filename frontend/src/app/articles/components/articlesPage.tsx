@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card, Button } from 'azeriand-library';
 import { BsArrowReturnRight } from "react-icons/bs";
 
-interface Article {
+export interface Article {
   id: string;
   title: string;
   description: string;
