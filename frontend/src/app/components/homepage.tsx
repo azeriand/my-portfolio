@@ -21,17 +21,18 @@ interface HomePageProps {
 export default function HomePage({ articles }: HomePageProps) {
   return (
     <main className='gap-4 flex flex-col min-h-full'>
+      <h1 className='sr-only'>Andrea Romera — Frontend Developer</h1>
       <Card appearance='mate' color="blue" intensity={500} className='flex flex-col gap-y-4 rounded-xl'>
         <section className="flex justify-between items-center rounded-xl">
-          <p className="text-base font-bold" style={{color: '#17A7EE'}}>Featured Project</p>
+          <h2 className="text-base font-bold" style={{color: '#17A7EE'}}>Featured Project</h2>
           <Link href='/projects'>
             <Button appearance="mate" color="blue" intensity={800} label='View all projects'/>
           </Link>
         </section>
         <section className='grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-x-8 lg:gap-x-14 items-center'>
-          <img src='/golden_core_preview.png' className='w-full sm:col-span-5 rounded-lg object-cover' alt="Golden Core App Preview"/>
+          <img src='/golden_core_preview.webp' width={1200} height={716} className='w-full h-auto sm:col-span-5 rounded-lg object-cover' alt="Golden Core App Preview"/>
           <article className='sm:col-span-7 gap-y-4 flex flex-col min-w-0'>
-            <p style={{color: '#17A7EE'}} className='font-bold text-xl'> Golden·Core App</p>
+            <h3 style={{color: '#17A7EE'}} className='font-bold text-xl'> Golden·Core App</h3>
             <p style={{ color: 'black'}}>
               A premium event photography platform that makes it easy to share, discover, and relive memories in one private designed space.
             </p>
@@ -46,11 +47,11 @@ export default function HomePage({ articles }: HomePageProps) {
 
       <section className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         <Card appearance='mate' color="purple" intensity={500} className='rounded-xl gap-y-4 flex flex-col min-w-0'>
-          <p className='text-base font-bold' style={{ color: '#9b8ce9'}}>My Design Library</p>
+          <h2 className='text-base font-bold' style={{ color: '#9b8ce9'}}>My Design Library</h2>
           <section className='grid grid-cols-1 gap-4 min-w-0'>
-            <img src='/library_preview.png' className='w-full h-24 sm:h-40! md:h-40! rounded-lg object-cover' alt="Library Preview"/>
+            <img src='/library_preview.webp' className='w-full h-24 sm:h-40! md:h-40! rounded-lg object-cover' alt="Library Preview"/>
             <div className='flex flex-col gap-y-4 min-w-0'>
-              <p className='font-bold break-words' style={{ color: '#9b8ce9'}}>Azeriand Library</p>
+              <h3 className='font-bold break-words' style={{ color: '#9b8ce9'}}>Azeriand Library</h3>
               <p className='break-words' style={{ color: 'black'}}>
                 A library of reusable, customizable UI components for consistent application interfaces.
               </p>
@@ -65,7 +66,7 @@ export default function HomePage({ articles }: HomePageProps) {
 
         <Card appearance='mate' color='orange' intensity={500} className='rounded-xl gap-y-4 flex flex-col min-w-0'>
           <section className="flex justify-between items-center">
-            <p className="text-base font-bold" style={{color: '#f59e31'}}>My Latest Articles</p>
+            <h2 className="text-base font-bold" style={{color: '#f59e31'}}>My Latest Articles</h2>
             <Link href='/articles'>
               <Button appearance="mate" color="orange" intensity={800} label='View all'/>
             </Link>
