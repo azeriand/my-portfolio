@@ -20,15 +20,15 @@ import { TbBlob } from "react-icons/tb";
 
 export default function Sidebar() {
 
-    const mailTo = () => {window.location.href = 'mailto: a.romeracosta@gmail.com'}
+    const mailTo = () => {window.location.href = 'mailto:a.romeracosta@gmail.com'}
 
   return (
     <div className='w-full flex flex-col gap-y-4'>
         <img src='/azeriand.png' alt="Azeriand Logo" className='card w-full rounded-xl'/>
         <Card noPadding appearance='mate' color='red' intensity={200} className='flex flex-col gap-y-3 p-6 xl:p-10 rounded-xl'>
             <section>
-                <h1 style={{color: '#f54c4a', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-2xl! xl:text-[1.9rem]! font-extrabold! break-words'>Andrea Romera</h1>
-                <h2 style={{color: '#fefefe', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-lg! xl:text-[1.25rem]! font-semibold!'>Frontend Developer</h2>
+                <p style={{color: '#f54c4a', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-2xl! xl:text-[1.9rem]! font-extrabold! break-words'>Andrea Romera</p>
+                <p style={{color: '#fefefe', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-lg! xl:text-[1.25rem]! font-semibold!'>Frontend Developer</p>
             </section>
             <div className='flex p-2 text-sm text-black font-bold justify-center items-center gap-x-2 bg-green-100 border! border-green-200! rounded-lg'>
                 <TbRadar2 size={18} className='shrink-0'/>

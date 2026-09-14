@@ -33,6 +33,8 @@ export default function ArticlesPage({ articles, strapiUrl }: ArticlesPageProps)
   const useStaticImages = process.env.NODE_ENV === 'production';
 
   return (
+    <>
+    <h1 className='sr-only'>Articles</h1>
     <Card appearance="mate" color="orange" intensity={500} className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4'>
       {articles.map((article, index) => {
         const imgUrl = article.cover?.url 
@@ -73,5 +75,6 @@ export default function ArticlesPage({ articles, strapiUrl }: ArticlesPageProps)
         );
       })}
     </Card>
+    </>
   );
 }
