@@ -27,7 +27,7 @@ export default function Sidebar() {
         <img src='/azeriand.png' alt="Azeriand Logo" className='card w-full rounded-xl'/>
         <Card noPadding appearance='mate' color='red' intensity={200} className='flex flex-col gap-y-3 p-6 xl:p-10 rounded-xl'>
             <section>
-                <p style={{color: '#f54c4a', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-2xl! xl:text-[1.9rem]! font-extrabold! break-words'>Andrea Romera</p>
+                <p style={{color: 'var(--text-red)', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-2xl! xl:text-[1.9rem]! font-extrabold! break-words'>Andrea Romera</p>
                 <p style={{color: '#fefefe', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-lg! xl:text-[1.25rem]! font-semibold!'>Frontend Developer</p>
             </section>
             <div className='flex p-2 text-sm text-black font-bold justify-center items-center gap-x-2 bg-green-100 border! border-green-200! rounded-lg'>
@@ -44,7 +44,7 @@ export default function Sidebar() {
             </section>
         </Card>
         
-        <section className='flex flex-wrap justify-center w-full h-fit gap-2'>
+        <section aria-hidden='true' className='flex flex-wrap justify-center w-full h-fit gap-2'>
             <Button appearance='mate' color='red' intensity={200} icon={<BiLogoJavascript size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
             <Button appearance='mate' color='red' intensity={200} icon={<BiLogoTypescript size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
             <Button appearance='mate' color='red' intensity={200} icon={<FaReact size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>

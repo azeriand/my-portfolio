@@ -35,7 +35,7 @@ export default function Projects() {
           <h2 style={{ color: 'black'}} className='text-2xl! font-bold'>Golden·Core</h2>
           <p style={{ color: 'black'}}>
             A premium event photography platform that makes it easy to share, discover, and relive memories in one private designed space.</p>
-          <section style={{ color: 'black'}} className='flex flex-wrap gap-2'>
+          <section aria-hidden='true' style={{ color: 'black'}} className='flex flex-wrap gap-2'>
             <IoLogoJavascript size={24}/>
             <FaReact size={24}/>
             <SiVite size={24}/>
@@ -48,8 +48,8 @@ export default function Projects() {
             <SiPostgresql size={24}/>
           </section>
           <section className="flex gap-x-2">
-            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}} onClick={goldenCoreAppPage}/>
-            <Button appearance='ghost' color='blue' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={goldenCoreAppRepo}/>
+            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: 'white'}} onClick={goldenCoreAppPage}/>
+            <Button appearance='ghost' color='blue' label="Repo" icon={<FaGithub/>} style={{color: 'var(--text-blue)'}} onClick={goldenCoreAppRepo}/>
           </section>
         </Card>
       </Card>
@@ -61,7 +61,7 @@ export default function Projects() {
           <p style={{ color: 'black'}}>
             A fitness platform that helps users track workouts and progress in a simple, intuitive way.
           </p>
-          <section style={{ color: 'black'}} className='flex flex-wrap gap-2'>
+          <section aria-hidden='true' style={{ color: 'black'}} className='flex flex-wrap gap-2'>
             <IoLogoJavascript size={24}/>
             <FaReact size={24}/>
             <SiVite size={24}/>
@@ -69,8 +69,8 @@ export default function Projects() {
             <FaGithub size={24}/>
           </section>
           <section className="flex gap-x-2">
-            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}} onClick={fitnessAppPage}/>
-            <Button appearance='ghost' color='blue' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={fitnessAppRepo}/>
+            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: 'white'}} onClick={fitnessAppPage}/>
+            <Button appearance='ghost' color='blue' label="Repo" icon={<FaGithub/>} style={{color: 'var(--text-blue)'}} onClick={fitnessAppRepo}/>
           </section>
         </Card>
       </Card>
@@ -83,7 +83,7 @@ export default function Projects() {
           <p style={{ color: 'black'}}>
             A library of reusable, customizable UI components for consistent application interfaces.            
           </p>
-          <section style={{ color: 'black'}} className='flex flex-wrap gap-2'>
+          <section aria-hidden='true' style={{ color: 'black'}} className='flex flex-wrap gap-2'>
             <IoLogoJavascript size={24}/>
             <FaReact size={24}/>
             <SiVite size={24}/>
@@ -93,8 +93,8 @@ export default function Projects() {
             <FaGithub size={24}/>
           </section>
           <section className="flex gap-x-2">
-            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: '#17A7EE'}} onClick={libraryPage}/>
-            <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={libraryRepo}/>
+            <Button label="Open" color='blue' intensity={800} icon={<FaArrowUpRightFromSquare/>} style={{color: 'white'}} onClick={libraryPage}/>
+            <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: 'var(--text-blue)'}} onClick={libraryRepo}/>
           </section>
         </Card>
       </Card>
@@ -106,7 +106,7 @@ export default function Projects() {
           <p style={{ color: 'black'}}>
             My own web development portfolio where I showcase my projects, technical skills, and experience.
           </p>
-          <section style={{ color: 'black'}} className='flex flex-wrap gap-2'>
+          <section aria-hidden='true' style={{ color: 'black'}} className='flex flex-wrap gap-2'>
             <IoLogoJavascript size={24}/>
             <FaReact size={24}/>
             <SiVite size={24}/>
@@ -116,7 +116,7 @@ export default function Projects() {
             <FaGithub size={24}/>
           </section>
           <section className="flex gap-x-2">
-            <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: '#17A7EE'}} onClick={portfolioRepo}/>
+            <Button appearance='ghost' label="Repo" icon={<FaGithub/>} style={{color: 'var(--text-blue)'}} onClick={portfolioRepo}/>
           </section>
         </Card>
       </Card>
