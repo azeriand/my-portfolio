@@ -37,7 +37,6 @@ export function ArticleClient({ article, lastArticles }: ArticleClientProps) {
       </Card>
     );
   }
-  console.log("articles array", lastArticles); // Log the article data to ensure it's being passed correctly
   return (
     <Card appearance="mate" color="orange" intensity={500} className='justify-center'>
         <img src={article.cover} alt='Article image' className='w-full h-48 sm:h-80! object-cover rounded-lg'/>
