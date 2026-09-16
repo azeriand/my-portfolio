@@ -18,6 +18,23 @@ import { RiNodejsLine } from "react-icons/ri";
 import { SiPostgresql } from "react-icons/si";
 import { TbBlob } from "react-icons/tb";
 
+const skills = [
+  { label: 'JavaScript', icon: <BiLogoJavascript size={24}/> },
+  { label: 'TypeScript', icon: <BiLogoTypescript size={24}/> },
+  { label: 'React', icon: <FaReact size={24}/> },
+  { label: 'Vite', icon: <SiVite size={24}/> },
+  { label: 'Tailwind CSS', icon: <RiTailwindCssFill size={24}/> },
+  { label: 'Next.js', icon: <RiNextjsFill size={24}/> },
+  { label: 'Git', icon: <FaGit size={24}/> },
+  { label: 'GitHub', icon: <FaGithub size={24}/> },
+  { label: 'Storybook', icon: <SiStorybook size={24}/> },
+  { label: 'Strapi', icon: <SiStrapi size={24}/> },
+  { label: 'Vercel', icon: <RiVercelLine size={24}/> },
+  { label: 'Vercel Blob', icon: <TbBlob size={24}/> },
+  { label: 'Node.js', icon: <RiNodejsLine size={24}/> },
+  { label: 'PostgreSQL', icon: <SiPostgresql size={24}/> },
+];
+
 export default function Sidebar() {
 
     const mailTo = () => {window.location.href = 'mailto:a.romeracosta@gmail.com'}
@@ -28,7 +45,7 @@ export default function Sidebar() {
         <Card noPadding appearance='mate' color='red' intensity={200} className='flex flex-col gap-y-3 p-6 xl:p-10 rounded-xl'>
             <section>
                 <p style={{color: 'var(--text-red)', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-2xl! xl:text-[1.9rem]! font-extrabold! break-words'>Andrea Romera</p>
-                <p style={{color: '#fefefe', textShadow: '0 1px 2px rgba(0,0,0,0.2)'}} className='text-lg! xl:text-[1.25rem]! font-semibold!'>Frontend Developer</p>
+                <p style={{color: 'var(--text-role)'}} className='text-lg! xl:text-[1.25rem]! font-semibold!'>Frontend Developer</p>
             </section>
             <div className='flex p-2 text-sm text-black font-bold justify-center items-center gap-x-2 bg-green-100 border! border-green-200! rounded-lg'>
                 <TbRadar2 size={18} className='shrink-0'/>
@@ -44,21 +61,12 @@ export default function Sidebar() {
             </section>
         </Card>
         
-        <section aria-hidden='true' className='flex flex-wrap justify-center w-full h-fit gap-2'>
-            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoJavascript size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<BiLogoTypescript size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaReact size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiVite size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiTailwindCssFill size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiNextjsFill size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaGit size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<FaGithub size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiStorybook size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiStrapi size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiVercelLine size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<TbBlob size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<RiNodejsLine size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
-            <Button appearance='mate' color='red' intensity={200} icon={<SiPostgresql size={24}/>} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
+        <section aria-label='Technologies I work with' className='flex flex-wrap justify-center w-full h-fit gap-2'>
+            {skills.map(({ label, icon }) => (
+                <span key={label} title={label} className='inline-flex'>
+                    <Button appearance='mate' color='red' intensity={200} icon={icon} aria-label={label} style={{ color: 'black' }} className='h-10 w-10 shrink-0 rounded-xl'/>
+                </span>
+            ))}
         </section>
 
         

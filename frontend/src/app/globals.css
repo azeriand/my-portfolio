@@ -13,13 +13,17 @@
   --color-orange-500: #F5CF9F;
   --color-orange-800: #f59e31;
 
-  /* Accessible text variants of the brand accents (WCAG AA >= 4.5:1 on the warm
-     background and on the light section cards). The brand accents above are kept
-     for fills/borders; these darker tones are used ONLY for accent-colored TEXT. */
-  --text-blue: #0F5C82;
-  --text-orange: #7A4C0C;
-  --text-purple: #544399;
-  --text-red: #A82826;
+  /* Softer, on-palette text variants of the brand accents. These raise legibility
+     toward WCAG AA-large (~3:1) for the large/bold accent text (section headings,
+     titles, name) while keeping the warm identity. The brand accents above are
+     kept for fills/borders; these tones are used ONLY for accent-colored TEXT. */
+  --text-blue: #1785B0;
+  --text-orange: #B5720F;
+  --text-purple: #7360C4;
+  --text-red: #D13634;
+  /* Secondary role text on the red identity card: deep wine, same red family as
+     the name but darker/muted so it reads as secondary and stays legible. */
+  --text-role: #8C2F2C;
 }
 
 @media (prefers-color-scheme: dark) {
