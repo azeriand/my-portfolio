@@ -1,11 +1,38 @@
 import 'azeriand-library/dist/styles.css';
 import "./globals.css";
 import "./prose.css";
+import type { Metadata } from "next";
 import React from "react";
 import Sidebar from "./components/sidebar";
 import Topbar from './components/topbar';
 import MobileNav from './components/mobileNav';
 import MdIdentityCard from './components/mdIdentityCard';
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://andrearc.com"),
+  title: {
+    default: "Andrea Romera — Frontend Developer",
+    template: "%s — Andrea Romera",
+  },
+  description:
+    "Frontend developer who designs and maintains her own component library. Projects, articles and a live design system.",
+  openGraph: {
+    type: "website",
+    siteName: "Andrea Romera",
+    title: "Andrea Romera — Frontend Developer",
+    description:
+      "Frontend developer who designs and maintains her own component library.",
+    url: "https://andrearc.com",
+    images: [{ url: "/azeriand.jpg", width: 1200, height: 630, alt: "Andrea Romera" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Andrea Romera — Frontend Developer",
+    description:
+      "Frontend developer who designs and maintains her own component library.",
+    images: ["/azeriand.jpg"],
+  },
+};
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode;}>) {
 

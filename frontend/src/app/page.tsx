@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import client from "../../strapi";
 import Homepage, { type Article } from "./components/homepage";
+
+export const metadata: Metadata = {
+  title: "Andrea Romera — Frontend Developer",
+  description:
+    "Frontend developer who designs and maintains her own component library. See my featured work, design system and articles.",
+};
 
 export async function getData() {
   const result = await client.collection('articles').find({populate: '*'});

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArticleClient } from './article-client';
 import client from "../../../../strapi";
 interface Article {
@@ -25,6 +26,25 @@ export async function generateStaticParams() {
   } catch (error) {
     console.error('Failed to generate static params:', error);
     return [];
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const article = await getArticle(slug)
+  if (!article) return { title: "Article" }
+  return {
+    title: article.title,
+    description: article.description,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      images: article.cover ? [{ url: article.cover }] : undefined,
+    },
   }
 }
 
@@ -59,6 +79,7 @@ export async function getArticle(slug: string) {
     const article: Article = {
         id: data.data[0].id,
         title: data.data[0].title,
+        description: data.data[0].description,
         content: data.data[0].blocks[0].body,
         cover: data.data[0].cover?.url 
           ? (useStaticImages 
