@@ -11,6 +11,7 @@ interface Article {
     slug?: string;
     cover?: string;
     description?: string;
+    category?: { name: string };
 }
 
 function RichText({ content }: { content?: string }) {
@@ -37,7 +38,6 @@ export function ArticleClient({ article, lastArticles }: ArticleClientProps) {
       </Card>
     );
   }
-  console.log("articles array", lastArticles); // Log the article data to ensure it's being passed correctly
   return (
     <Card appearance="mate" color="orange" intensity={500} className='justify-center'>
         <img src={article.cover} alt='Article image' className='w-full h-48 sm:h-80! object-cover rounded-lg'/>
@@ -53,7 +53,9 @@ export function ArticleClient({ article, lastArticles }: ArticleClientProps) {
             {lastArticles?.map(article => 
               <Link href={`/articles/${article.slug}`} key={article.id}>
                 <Card appearance="mate" color="yellow" intensity={500} noPadding key={article.id} className='flex flex-col gap-y-2 p-4 rounded-lg'>
-                  <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
+                  {article.category?.name && (
+                    <Badge appearance='mate' size='sm' color='orange' intensity={800} label={article.category.name}/>
+                  )}
                   <article className='flex flex-col gap-y-1'>
                     <h3 style={{ color: 'black'}} className='font-bold'>{article.title}</h3>
                     <p style={{ color: 'black'}}>{article.description}</p>

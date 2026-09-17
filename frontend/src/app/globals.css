@@ -12,6 +12,18 @@
   --color-yellow-500: #f0e2d0;
   --color-orange-500: #F5CF9F;
   --color-orange-800: #f59e31;
+
+  /* Softer, on-palette text variants of the brand accents. These raise legibility
+     toward WCAG AA-large (~3:1) for the large/bold accent text (section headings,
+     titles, name) while keeping the warm identity. The brand accents above are
+     kept for fills/borders; these tones are used ONLY for accent-colored TEXT. */
+  --text-blue: #1785B0;
+  --text-orange: #B5720F;
+  --text-purple: #7360C4;
+  --text-red: #D13634;
+  /* Secondary role text on the red identity card: deep wine, same red family as
+     the name but darker/muted so it reads as secondary and stays legible. */
+  --text-role: #8C2F2C;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,6 +52,17 @@ body {
 .card:hover {
   transform: translateY(-0.10rem); /* equivalente a -translate-y-1 */
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0,0,0,0.05); /* shadow-lg aproximado */
+}
+
+/* Respect users who prefer reduced motion: keep the shadow feedback but drop
+   the movement and transitions. */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+  }
 }
 
 .card.click:focus {

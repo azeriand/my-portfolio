@@ -49,7 +49,7 @@ async function fetchFromStrapi(endpoint) {
   return new Promise((resolve, reject) => {
     const protocol = url.startsWith('https') ? https : http;
     
-    protocol.get(url, (response) => {
+    const request = protocol.get(url, (response) => {
       let data = '';
       
       response.on('data', (chunk) => {
@@ -57,14 +57,28 @@ async function fetchFromStrapi(endpoint) {
       });
       
       response.on('end', () => {
+        if (response.statusCode !== 200) {
+          reject(new Error(`Strapi returned HTTP ${response.statusCode} for ${url}`));
+          return;
+        }
         try {
           resolve(JSON.parse(data));
-        } catch (err) {
-          reject(err);
+        } catch {
+          reject(new Error(`Could not parse Strapi response from ${url} (not valid JSON)`));
         }
       });
-    }).on('error', (err) => {
-      reject(err);
+    });
+
+    request.on('error', (err) => {
+      // Connection-level failure (Strapi not running, wrong port, DNS, etc.)
+      if (err.code === 'ECONNREFUSED') {
+        reject(new Error(
+          `Could not connect to Strapi at ${STRAPI_URL}. Is it running? ` +
+          `Start it with "npm run develop" in the backend folder, then run the build again.`
+        ));
+      } else {
+        reject(new Error(`Request to ${url} failed: ${err.code || err.message}`));
+      }
     });
   });
 }
@@ -133,7 +147,7 @@ async function downloadImages() {
     console.log(`   Total: ${imageUrls.size}`);
     
   } catch (err) {
-    console.error('❌ Error downloading images:', err.message);
+    console.error(`❌ Error downloading images: ${err.message || err}`);
     process.exit(1);
   }
 }

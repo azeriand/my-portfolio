@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArticleClient } from './article-client';
 import client from "../../../../strapi";
 interface Article {
@@ -7,6 +8,7 @@ interface Article {
     cover?: string | undefined;
     slug?: string;
     description?: string;
+    category?: { name: string };
 }
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
@@ -25,6 +27,25 @@ export async function generateStaticParams() {
   } catch (error) {
     console.error('Failed to generate static params:', error);
     return [];
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const article = await getArticle(slug)
+  if (!article) return { title: "Article" }
+  return {
+    title: article.title,
+    description: article.description,
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      images: article.cover ? [{ url: article.cover }] : undefined,
+    },
   }
 }
 
@@ -59,6 +80,7 @@ export async function getArticle(slug: string) {
     const article: Article = {
         id: data.data[0].id,
         title: data.data[0].title,
+        description: data.data[0].description,
         content: data.data[0].blocks[0].body,
         cover: data.data[0].cover?.url 
           ? (useStaticImages 
@@ -92,11 +114,13 @@ export async function getLastArticles(excludedSlug: string) {
   
   reversedDocuments.forEach((doc) => {
     const cover = doc.cover as { url?: string } | undefined;
+    const category = doc.category as { name?: string } | undefined;
     lastArticles.push({
       id: doc.id,
       title: doc.title,
       description: doc.description,
       slug: doc.slug,
+      category: category?.name ? { name: category.name } : undefined,
       cover: cover?.url 
         ? (useStaticImages 
             ? `/uploads/${cover.url.split('/').pop()}` 

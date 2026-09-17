@@ -42,6 +42,10 @@
 
 # strapi
 .tmp
+# ...but the backend SQLite DB IS the versioned content store (the CI/build reads
+# from it), so keep tracking it. See commit "track Strapi database for content persistence".
+!backend/.tmp/
+!backend/.tmp/data.db
 .env
 license.txt
 exports

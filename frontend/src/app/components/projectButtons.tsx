@@ -13,8 +13,8 @@ export default function ProjectButtons({ pageUrl, repoUrl, color }: ProjectButto
   const openPage = () => window.open(pageUrl);
   const openRepo = () => window.open(repoUrl);
 
-  const primaryStyle = color === "blue" ? { color: 'white' } : { color: 'white' };
-  const ghostStyle = color === "blue" ? { color: '#17A7EE' } : { color: '#9b8ce9' };
+  const primaryStyle = { color: 'white' };
+  const ghostStyle = color === "blue" ? { color: 'var(--text-blue)' } : { color: 'var(--text-purple)' };
 
   return (
     <div className="flex gap-x-2">

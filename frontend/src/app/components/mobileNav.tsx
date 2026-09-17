@@ -65,7 +65,7 @@ export default function MobileNav() {
         <Link href='/' className='flex items-center gap-x-3 min-w-0' aria-label='Andrea Romera - home'>
           <Avatar src="/azeriand.jpg" className='card shrink-0'/>
           <span className='flex flex-col min-w-0'>
-            <span className='font-bold truncate' style={{ color: '#f54c4a' }}>Andrea Romera</span>
+            <span className='font-bold truncate' style={{ color: 'var(--text-red)' }}>Andrea Romera</span>
             <span className='text-xs truncate' style={{ color: 'black' }}>Frontend Developer</span>
           </span>
         </Link>

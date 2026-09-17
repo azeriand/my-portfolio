@@ -13,7 +13,7 @@ export default function Topbar() {
     const myLibraryLink = () => {window.open('https://library.andrearc.com/')}
     const githubProfile = () => {window.open('https://github.com/azeriand')}
     const linkedinProfile = () => {window.open('https://www.linkedin.com/in/a-romera-costa/')}
-    const mailTo = 'mailto: a.romeracosta@gmail.com'
+    const mailTo = 'mailto:a.romeracosta@gmail.com'
     
     return (
         <Card appearance='mate' noPadding color='red' intensity={200} className='flex justify-between items-center gap-4 py-2 px-5 rounded-xl'>
