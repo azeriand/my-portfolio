@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 async function getData() {
-  const result = await client.collection('articles').find({ populate: 'cover' });
+  const result = await client.collection('articles').find({ populate: ['cover', 'category'] });
   return result.data;
 }
 

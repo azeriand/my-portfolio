@@ -9,6 +9,9 @@ export interface Article {
   title: string;
   description: string;
   slug: string;
+  category?: {
+    name: string;
+  };
   cover?: {
     url: string;
   };
@@ -74,7 +77,9 @@ export default function HomePage({ articles }: HomePageProps) {
           {articles.map(article => 
             <Link href={`/articles/${article.slug}`} key={article.id}>
               <Card appearance="mate" color="yellow" intensity={500} noPadding className='flex flex-col gap-y-2 p-4 rounded-lg'>
-                <Badge appearance='mate' size='sm' color='orange' intensity={800} label={'Design Library'}/>
+                {article.category?.name && (
+                  <Badge appearance='mate' size='sm' color='orange' intensity={800} label={article.category.name}/>
+                )}
                 <article className='flex flex-col gap-y-1'>
                   <h3 style={{ color: 'black'}} className='font-bold'>{article.title}</h3>
                   <p style={{ color: 'black'}}>{article.description}</p>

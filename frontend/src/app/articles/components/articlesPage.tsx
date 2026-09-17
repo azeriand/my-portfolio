@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Card, Button } from 'azeriand-library';
+import { Card, Button, Badge } from 'azeriand-library';
 import { BsArrowReturnRight } from "react-icons/bs";
 
 export interface Article {
@@ -9,6 +9,9 @@ export interface Article {
   title: string;
   description: string;
   slug: string;
+  category?: {
+    name: string;
+  };
   cover?: {
     url: string;
   };
@@ -58,6 +61,9 @@ export default function ArticlesPage({ articles, strapiUrl }: ArticlesPageProps)
               className={`rounded w-full h-32 sm:h-40 object-cover ${isWide(index) ? 'lg:h-full lg:col-span-6' : 'lg:h-40'}`}
             />
             <article className={`flex flex-col gap-y-2 min-w-0 ${isWide(index) ? 'lg:col-span-6 lg:justify-center' : ''}`}>
+              {article.category?.name && (
+                <Badge appearance='mate' size='sm' color='orange' intensity={800} label={article.category.name}/>
+              )}
               <h2 style={{ color: 'black'}} className='font-bold'>{article.title}</h2>
               <p style={{ color: 'black'}}>{article.description}</p>
               <Link href={`/articles/${article.slug}`}>

@@ -8,6 +8,7 @@ interface Article {
     cover?: string | undefined;
     slug?: string;
     description?: string;
+    category?: { name: string };
 }
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
@@ -113,11 +114,13 @@ export async function getLastArticles(excludedSlug: string) {
   
   reversedDocuments.forEach((doc) => {
     const cover = doc.cover as { url?: string } | undefined;
+    const category = doc.category as { name?: string } | undefined;
     lastArticles.push({
       id: doc.id,
       title: doc.title,
       description: doc.description,
       slug: doc.slug,
+      category: category?.name ? { name: category.name } : undefined,
       cover: cover?.url 
         ? (useStaticImages 
             ? `/uploads/${cover.url.split('/').pop()}` 
